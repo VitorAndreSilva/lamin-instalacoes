@@ -1,102 +1,22 @@
-Quero que você execute uma reconstrução COMPLETA da landing page da Lamin Instalações Elétricas.
+Aprovo a direção artística proposta pelo Designer e autorizo a implementação das melhorias em toda a landing page.
 
-Leia integralmente o AGENTS.md e analise o repositório existente antes de modificar arquivos.
+Priorize a criação da linguagem visual "linha Lamin", inspirada no fio condutor presente no logotipo original.
 
-**Contexto importante:** uma tentativa anterior de implementar somente Header e Hero resultou em uma aplicação quebrada, que não renderiza corretamente. Não quero continuar essa abordagem fragmentada.
+Implemente as alterações propostas para Hero, Services, Guarantees, Steps, About, tokens visuais e Footer, preservando a arquitetura e o conteúdo comercial existente.
 
-Sua tarefa agora é entregar o site inteiro, com arquitetura coerente, todas as seções integradas e funcionamento validado.
+Orientações adicionais:
 
-## Autonomia
+1. Os elementos gráficos devem reforçar a identidade, não competir com o conteúdo.
+2. A faixa zebrada de Guarantees é uma hipótese visual: utilize-a somente se o resultado for elegante e equilibrado.
+3. A composição em circuito da seção Steps deve funcionar igualmente bem em desktop e mobile.
+4. A redução dos botões repetidos não deve prejudicar a clareza ou a acessibilidade dos links de orçamento.
+5. Ajuste tipografia, cores e espaçamentos com atenção ao contraste e à responsividade.
+6. Não altere informações comerciais sem confirmação.
+7. Não adicione dependências desnecessárias.
+8. Preserve o funcionamento atual da aplicação.
 
-Você tem autorização para refazer completamente a estrutura Vue, substituir componentes, reorganizar arquivos, reconstruir estilos e corrigir problemas arquiteturais existentes.
+Sobre o segundo telefone do banner: mantenha-o fora do site por enquanto, até que eu confirme se ele está ativo. Não remova nem altere o número principal já confirmado.
 
-Não precisa preservar a implementação anterior se ela prejudicar o resultado.
+Execute as melhorias completas e, ao terminar, faça o build e verifique a aplicação em resoluções desktop e mobile. Corrija quaisquer erros introduzidos.
 
-Preserve, entretanto, a identidade visual da Lamin, os conteúdos comerciais confirmados e a possibilidade de recuperar a versão anterior pelo Git.
-
-Não crie backend.
-
-## Design
-
-Desenvolva uma landing page visualmente marcante, elegante, contemporânea e profissional.
-
-Utilize a referência visual em `public/lamin.jpeg` e as diretrizes do AGENTS.md.
-
-A linguagem visual deve explorar uma estética industrial minimalista, com referências discretas a esquemas elétricos, tipografia forte, composição cuidadosa e uso moderado de amarelo e oliva.
-
-A aplicação pode combinar superfícies escuras e claras quando isso melhorar a composição.
-
-Não quero uma interface genérica, um template pronto ou uma página visualmente repetitiva.
-
-Preserve fielmente a identidade da marca.
-
-## Implementação completa
-
-Implemente e integre toda a landing page:
-
-- Header e navegação responsiva.
-- Hero.
-- Serviços.
-- Diferenciais.
-- Processo de atendimento.
-- Sobre o profissional.
-- Depoimentos, somente se existirem dados reais.
-- FAQ.
-- Contato.
-- Footer.
-- Integração com WhatsApp e canais oficiais.
-
-Organize o código em componentes Vue adequados, com arquitetura sustentável.
-
-Centralize os dados comerciais para facilitar futuras alterações.
-
-Implemente responsividade, acessibilidade, SEO e interações necessárias.
-
-Não introduza funcionalidades que não estejam completamente implementadas.
-
-## Recuperação do projeto
-
-Como a tentativa anterior deixou o site com erros:
-
-1. Inspecione o estado atual do repositório.
-2. Identifique os problemas estruturais e de execução.
-3. Decida se é melhor corrigir a base atual ou reconstruí-la.
-4. Execute a solução escolhida.
-5. Garanta que a aplicação esteja funcional como um todo.
-
-Não mantenha componentes quebrados apenas para preservar trabalho anterior.
-
-## Validação obrigatória
-
-Após implementar o site completo:
-
-1. Instale ou ajuste dependências necessárias.
-2. Execute o build de produção.
-3. Inicie a aplicação.
-4. Verifique a renderização real no navegador, caso disponha das ferramentas necessárias.
-5. Verifique resoluções mobile, tablet e desktop.
-6. Teste navegação, menu e links de contato.
-7. Corrija os erros identificados.
-8. Repita a validação após as correções.
-
-Não declare sucesso apenas porque os arquivos foram criados.
-
-Se não tiver acesso ao navegador, informe essa limitação e não afirme ter realizado testes visuais.
-
-## Entrega
-
-Quero receber uma aplicação completa e funcional, não uma implementação parcial.
-
-Não interrompa o desenvolvimento para solicitar aprovação de cada seção.
-
-Ao finalizar, informe:
-
-- Arquitetura final.
-- Componentes e seções implementados.
-- Arquivos principais modificados.
-- Dependências adicionadas ou removidas.
-- Comandos executados.
-- Resultados dos testes.
-- Eventuais limitações pendentes.
-
-Execute a reconstrução completa agora.
+Não considere a implementação concluída sem verificar o resultado funcional. Se não conseguir realizar uma inspeção visual real, informe essa limitação.

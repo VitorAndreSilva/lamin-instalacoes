@@ -6,6 +6,10 @@ const year = new Date().getFullYear()
 
 <template>
   <footer class="footer surface-brand">
+    <div class="container">
+      <span class="footer__wire" aria-hidden="true"></span>
+    </div>
+
     <div class="container footer__grid">
       <div class="footer__brand">
         <img
@@ -44,8 +48,26 @@ const year = new Date().getFullYear()
 
 <style scoped>
 .footer {
-  padding-top: var(--sp-9);
-  border-top: var(--rule) solid var(--accent);
+  padding-top: var(--sp-8);
+}
+
+/* fio final — o condutor encerra num ponto */
+.footer__wire {
+  position: relative;
+  display: block;
+  width: 160px;
+  height: var(--trace-w);
+  background: var(--border-on-brand-strong);
+}
+
+.footer__wire::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: var(--node-size);
+  height: var(--node-size);
+  background: var(--brand-yellow);
 }
 
 .footer__grid {
@@ -53,6 +75,7 @@ const year = new Date().getFullYear()
   grid-template-columns: auto 1fr;
   gap: var(--sp-9);
   align-items: center;
+  padding-top: var(--sp-7);
   padding-bottom: var(--sp-8);
 }
 

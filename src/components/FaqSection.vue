@@ -50,9 +50,8 @@ import { faqs } from '../content'
   display: none;
 }
 
-.faq__item[open] .faq__q,
-.faq__q:hover {
-  color: var(--accent-text);
+.faq__item[open] .faq__q {
+  color: var(--text);
 }
 
 .faq__marker {
@@ -66,8 +65,13 @@ import { faqs } from '../content'
 .faq__marker::after {
   content: '';
   position: absolute;
+  background: var(--border-strong);
+  transition: background-color var(--dur) var(--ease);
+}
+
+.faq__item[open] .faq__marker::before,
+.faq__item[open] .faq__marker::after {
   background: var(--accent);
-  transition: transform var(--dur) var(--ease);
 }
 
 .faq__marker::before {

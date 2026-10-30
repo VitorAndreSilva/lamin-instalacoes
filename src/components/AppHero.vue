@@ -5,8 +5,12 @@ import { wa } from './icons'
 
 <template>
   <section id="top" class="hero surface-brand">
+    <div class="hero__circuit" aria-hidden="true">
+      <span class="hero__cirnode"></span>
+    </div>
+
     <div class="container hero__grid">
-      <div class="hero__body">
+      <div class="hero__main">
         <p class="eyebrow">{{ brand.professional }}</p>
 
         <h1 class="hero__title">
@@ -17,20 +21,6 @@ import { wa } from './icons'
           Instalações elétricas residenciais e comerciais. Atendimento com rapidez, segurança,
           garantia e orçamento por escrito.
         </p>
-
-        <div class="hero__actions">
-          <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
-            <span class="icon" v-html="wa"></span>
-            Pedir orçamento
-          </a>
-          <a class="btn btn--ghost-on-brand" href="#servicos">Ver serviços</a>
-        </div>
-
-        <ul class="hero__trust">
-          <li>Orçamento sem compromisso</li>
-          <li>Atendimento de urgência</li>
-          <li>Garantia em todos os serviços</li>
-        </ul>
       </div>
 
       <aside class="hero__plate">
@@ -44,8 +34,8 @@ import { wa } from './icons'
 
         <dl class="plate__info">
           <div class="plate__row">
-            <dt>Profissional</dt>
-            <dd>{{ contacts.instagramHandle }}</dd>
+            <dt>Responsável</dt>
+            <dd>{{ brand.professional }}</dd>
           </div>
           <div class="plate__row">
             <dt>WhatsApp</dt>
@@ -54,60 +44,127 @@ import { wa } from './icons'
             </dd>
           </div>
           <div class="plate__row">
+            <dt>Instagram</dt>
+            <dd>
+              <a
+                class="plate__link plate__link--sm"
+                :href="contacts.instagram"
+                target="_blank"
+                rel="noopener"
+              >
+                {{ contacts.instagramHandle }}
+              </a>
+            </dd>
+          </div>
+          <div class="plate__row">
             <dt>Atendimento</dt>
             <dd>{{ contacts.region }}</dd>
           </div>
         </dl>
       </aside>
+
+      <div class="hero__actions">
+        <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
+          <span class="icon" v-html="wa"></span>
+          Pedir orçamento
+        </a>
+        <a class="btn btn--ghost-on-brand" href="#servicos">Ver serviços</a>
+      </div>
+
+      <ul class="hero__trust">
+        <li>Orçamento sem compromisso</li>
+        <li>Atendimento de urgência</li>
+        <li>Garantia em todos os serviços</li>
+      </ul>
     </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
+  position: relative;
   padding-top: calc(var(--header-h) + var(--sp-9));
   padding-bottom: var(--sp-9);
   border-bottom: var(--rule) solid var(--accent);
 }
 
+/* ---------- Fio condutor (canto superior direito) ---------- */
+
+.hero__circuit {
+  display: none;
+  position: absolute;
+  top: calc(var(--header-h) + var(--sp-6));
+  right: var(--gutter);
+  width: min(260px, 22vw);
+  height: 96px;
+  pointer-events: none;
+}
+
+.hero__circuit::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--trace-w);
+  background: var(--border-on-brand-strong);
+}
+
+.hero__circuit::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--trace-w);
+  height: 100%;
+  background: var(--border-on-brand-strong);
+}
+
+.hero__cirnode {
+  position: absolute;
+  bottom: -4px;
+  left: -3.5px;
+  width: var(--node-size);
+  height: var(--node-size);
+  background: var(--brand-yellow);
+}
+
+/* ---------- Composição ---------- */
+
 .hero__grid {
   display: grid;
   grid-template-columns: 1.08fr 0.92fr;
-  align-items: center;
-  gap: clamp(3rem, 6vw, 5rem);
+  grid-template-areas:
+    'main plate'
+    'actions plate'
+    'trust plate';
+  column-gap: clamp(3rem, 6vw, 5rem);
+  row-gap: var(--sp-6);
+  align-items: start;
 }
 
-/* ---------- Corpo ---------- */
-
-.hero__title {
-  font-size: var(--fs-giant);
-  letter-spacing: -0.025em;
-  margin-top: var(--sp-5);
+.hero__main {
+  grid-area: main;
 }
 
-.hero .text-accent {
-  color: var(--accent-on-brand);
-}
-
-.hero__lead {
-  margin-top: var(--sp-5);
-  max-width: 34rem;
-  color: var(--on-brand-muted);
-  font-size: var(--fs-lead);
+.hero__plate {
+  grid-area: plate;
 }
 
 .hero__actions {
+  grid-area: actions;
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
-  margin-top: var(--sp-7);
+  margin-top: var(--sp-5);
 }
 
 .hero__trust {
+  grid-area: trust;
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2) var(--sp-5);
-  margin-top: var(--sp-7);
+  margin-top: var(--sp-4);
   padding-top: var(--sp-5);
   border-top: var(--hairline) solid var(--border);
   font-size: var(--fs-small);
@@ -126,6 +183,26 @@ import { wa } from './icons'
   height: 6px;
   background: var(--accent-on-brand);
   flex: none;
+}
+
+/* ---------- Tipografia ---------- */
+
+.hero__title {
+  font-size: var(--fs-giant);
+  font-weight: var(--fw-heavy);
+  letter-spacing: -0.025em;
+  margin-top: var(--sp-5);
+}
+
+.hero .text-accent {
+  color: var(--accent-on-brand);
+}
+
+.hero__lead {
+  margin-top: var(--sp-5);
+  max-width: 34rem;
+  color: var(--on-brand-muted);
+  font-size: var(--fs-lead);
 }
 
 /* ---------- Placa (eco do banner) ---------- */
@@ -183,11 +260,21 @@ import { wa } from './icons'
   transition: color var(--dur) var(--ease);
 }
 
+.plate__link--sm {
+  font-size: 1rem;
+}
+
 .plate__link:hover {
   color: var(--accent-on-brand);
 }
 
 /* ---------- Responsivo ---------- */
+
+@media (min-width: 901px) {
+  .hero__circuit {
+    display: block;
+  }
+}
 
 @media (max-width: 900px) {
   .hero {
@@ -197,11 +284,11 @@ import { wa } from './icons'
 
   .hero__grid {
     grid-template-columns: 1fr;
-    gap: var(--sp-8);
-  }
-
-  .hero__actions {
-    margin-top: var(--sp-6);
+    grid-template-areas:
+      'main'
+      'plate'
+      'actions'
+      'trust';
   }
 
   .hero__actions .btn {

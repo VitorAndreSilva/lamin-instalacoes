@@ -5,7 +5,7 @@ import { steps } from '../content'
 <template>
   <section id="como-funciona" class="section section--alt">
     <div class="container">
-      <header class="section-head section-head--center">
+      <header class="section-head">
         <p class="eyebrow">{{ steps.eyebrow }}</p>
         <h2 class="section-head__title">
           Simples, rápido e <span class="text-accent">sem burocracia</span>
@@ -24,16 +24,53 @@ import { steps } from '../content'
 </template>
 
 <style scoped>
+/* ---------- Circuitos em série (desktop: linha horizontal) ---------- */
+
 .steps {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--sp-6);
-  counter-reset: passo;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 9px;
+  left: 0;
+  right: 0;
+  height: var(--rule);
+  background: var(--border-strong);
+}
+
+.steps::after {
+  content: '';
+  position: absolute;
+  top: 4px;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--brand-yellow);
 }
 
 .steps__item {
-  padding-top: var(--sp-5);
-  border-top: var(--rule) solid var(--accent);
+  position: relative;
+  padding-top: var(--sp-7);
+}
+
+.steps__item::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: var(--bg-soft);
+  border: var(--rule) solid var(--brand-yellow);
+}
+
+.steps__item:first-child::before {
+  background: var(--brand-yellow);
 }
 
 .steps__num {
@@ -42,8 +79,8 @@ import { steps } from '../content'
   font-style: italic;
   font-weight: 700;
   font-size: var(--fs-mid);
-  color: var(--accent-text);
-  margin-bottom: var(--sp-3);
+  color: var(--text);
+  margin-bottom: var(--sp-2);
 }
 
 .steps__title {
@@ -54,17 +91,46 @@ import { steps } from '../content'
 .steps__desc {
   color: var(--text-muted);
   font-size: var(--fs-body);
+  max-width: 16rem;
 }
+
+/* ---------- Vertical: o fio desce pela esquerda ---------- */
 
 @media (max-width: 900px) {
   .steps {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 520px) {
-  .steps {
     grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .steps::before {
+    top: 4px;
+    bottom: 4px;
+    right: auto;
+    left: 4px;
+    width: var(--rule);
+    height: auto;
+  }
+
+  .steps::after {
+    top: auto;
+    right: auto;
+    bottom: -2px;
+    left: -1px;
+  }
+
+  .steps__item {
+    padding-top: 0;
+    padding-left: 2.5rem;
+    margin-bottom: var(--sp-7);
+  }
+
+  .steps__item:last-child {
+    margin-bottom: 0;
+  }
+
+  .steps__item::before {
+    top: 2px;
+    left: 0;
   }
 }
 </style>

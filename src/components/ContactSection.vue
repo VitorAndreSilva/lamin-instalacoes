@@ -1,5 +1,5 @@
 <script setup>
-import { contact, contacts } from '../content'
+import { contact, contacts, brand } from '../content'
 import { wa } from './icons'
 
 const channels = [
@@ -51,6 +51,17 @@ const channels = [
           <span class="contact__ctaicon" v-html="wa"></span>
           Conversar no WhatsApp
         </a>
+
+        <dl class="contact__meta">
+          <div class="contact__metarow">
+            <dt>Responsável</dt>
+            <dd>{{ brand.professional }}</dd>
+          </div>
+          <div class="contact__metarow">
+            <dt>Atendimento</dt>
+            <dd>{{ contacts.region }}</dd>
+          </div>
+        </dl>
 
         <ul class="contact__rows">
           <li
@@ -118,6 +129,37 @@ const channels = [
 .contact__ctaicon :deep(svg) {
   width: 20px;
   height: 20px;
+}
+
+.contact__meta {
+  margin-top: var(--sp-5);
+  border-top: var(--hairline) solid var(--border);
+}
+
+.contact__metarow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: var(--sp-3) 0;
+  border-bottom: var(--hairline) solid var(--border);
+}
+
+.contact__metarow:last-child {
+  border-bottom: 0;
+}
+
+.contact__metarow dt {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-brand-muted);
+}
+
+.contact__metarow dd {
+  color: var(--on-brand);
+  font-size: var(--fs-body);
 }
 
 .contact__rows {

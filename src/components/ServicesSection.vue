@@ -14,22 +14,30 @@ import { services, contacts } from '../content'
 
       <ul class="index">
         <li v-for="(s, i) in services.list" :key="s.title" class="index__row">
-          <span class="index__num">{{ String(i + 1).padStart(2, '0') }}</span>
+          <span class="index__num" aria-hidden="true">{{ String(i + 1).padStart(2, '0') }}</span>
           <div class="index__body">
-            <h3 class="index__title">{{ s.title }}</h3>
+            <h3 class="index__title">
+              <a
+                class="index__link"
+                :href="contacts.whatsapp"
+                target="_blank"
+                rel="noopener"
+                :aria-label="`Solicitar orçamento para ${s.title}`"
+              >
+                {{ s.title }}
+              </a>
+            </h3>
             <p class="index__desc">{{ s.desc }}</p>
           </div>
-          <a
-            class="index__cta"
-            :href="contacts.whatsapp"
-            target="_blank"
-            rel="noopener"
-            :aria-label="`Solicitar orçamento para ${s.title}`"
-          >
-            Orçamento
-          </a>
+          <span class="index__arrow" aria-hidden="true">→</span>
         </li>
       </ul>
+
+      <div class="index__more">
+        <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
+          Pedir orçamento no WhatsApp
+        </a>
+      </div>
     </div>
   </section>
 </template>
@@ -40,17 +48,31 @@ import { services, contacts } from '../content'
 }
 
 .index__row {
+  position: relative;
   display: grid;
   grid-template-columns: 3.5rem 1fr auto;
-  align-items: start;
+  align-items: center;
   gap: var(--sp-5);
   padding: var(--sp-5) 0;
   border-bottom: var(--hairline) solid var(--border);
   transition: background-color var(--dur) var(--ease);
 }
 
-.index__row:hover {
+.index__num,
+.index__body {
+  transition: transform var(--dur) var(--ease);
+}
+
+.index__row:hover,
+.index__row:focus-within {
   background: var(--bg-soft);
+}
+
+.index__row:hover .index__body,
+.index__row:hover .index__num,
+.index__row:focus-within .index__body,
+.index__row:focus-within .index__num {
+  transform: translateX(0.5rem);
 }
 
 .index__num {
@@ -59,12 +81,21 @@ import { services, contacts } from '../content'
   font-weight: 600;
   font-size: var(--fs-small);
   color: var(--accent-text);
-  padding-top: 0.2rem;
 }
 
 .index__title {
   font-size: var(--fs-mid);
-  margin-bottom: var(--sp-2);
+}
+
+.index__link {
+  display: inline-block;
+  color: inherit;
+}
+
+.index__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
 }
 
 .index__desc {
@@ -73,34 +104,30 @@ import { services, contacts } from '../content'
   max-width: 44rem;
 }
 
-.index__cta {
-  white-space: nowrap;
-  padding: 0.35rem 0.9rem;
-  border: var(--hairline) solid var(--border-strong);
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.index__arrow {
+  color: var(--accent-text);
+  font-size: var(--fs-lead);
+  opacity: 0;
+  transform: translateX(-6px);
   transition:
-    border-color var(--dur) var(--ease),
-    color var(--dur) var(--ease);
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
 }
 
-.index__cta:hover {
-  border-color: var(--accent);
-  color: var(--accent-text);
+.index__row:hover .index__arrow,
+.index__row:focus-within .index__arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.index__more {
+  margin-top: var(--sp-7);
 }
 
 @media (max-width: 700px) {
   .index__row {
     grid-template-columns: 2.5rem 1fr;
-  }
-
-  .index__cta {
-    grid-column: 2;
-    width: fit-content;
-    margin-top: var(--sp-2);
+    row-gap: var(--sp-2);
   }
 }
 </style>
