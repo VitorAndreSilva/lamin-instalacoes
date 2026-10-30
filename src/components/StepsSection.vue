@@ -66,7 +66,7 @@ import { steps } from '../content'
   width: 10px;
   height: 10px;
   background: var(--bg-soft);
-  border: var(--rule) solid var(--brand-yellow);
+  border: var(--rule) solid var(--brand-olive);
 }
 
 .steps__item:first-child::before {

@@ -83,8 +83,8 @@ import { wa } from './icons'
 <style scoped>
 .hero {
   position: relative;
-  padding-top: calc(var(--header-h) + var(--sp-9));
-  padding-bottom: var(--sp-9);
+  padding-top: calc(var(--header-h) + var(--sp-8));
+  padding-bottom: var(--sp-8);
   border-bottom: var(--rule) solid var(--accent);
 }
 
@@ -181,7 +181,7 @@ import { wa } from './icons'
   content: '';
   width: 6px;
   height: 6px;
-  background: var(--accent-on-brand);
+  background: var(--brand-olive);
   flex: none;
 }
 
@@ -210,7 +210,7 @@ import { wa } from './icons'
 .hero__plate {
   border: var(--hairline) solid var(--border);
   background: var(--elev-on-brand);
-  padding: var(--sp-7) var(--sp-7) var(--sp-5);
+  padding: var(--sp-6) var(--sp-6) var(--sp-4);
 }
 
 .plate__mark {
@@ -219,7 +219,7 @@ import { wa } from './icons'
 }
 
 .plate__info {
-  margin-top: var(--sp-7);
+  margin-top: var(--sp-6);
   border-top: var(--hairline) solid var(--border);
   font-size: var(--fs-small);
 }

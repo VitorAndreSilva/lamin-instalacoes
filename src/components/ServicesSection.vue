@@ -44,16 +44,19 @@ import { services, contacts } from '../content'
 
 <style scoped>
 .index {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--sp-9);
   border-top: var(--hairline) solid var(--border);
 }
 
 .index__row {
   position: relative;
   display: grid;
-  grid-template-columns: 3.5rem 1fr auto;
+  grid-template-columns: 3rem 1fr auto;
   align-items: center;
-  gap: var(--sp-5);
-  padding: var(--sp-5) 0;
+  gap: var(--sp-4);
+  padding: var(--sp-4) 0;
   border-bottom: var(--hairline) solid var(--border);
   transition: background-color var(--dur) var(--ease);
 }
@@ -72,7 +75,7 @@ import { services, contacts } from '../content'
 .index__row:hover .index__num,
 .index__row:focus-within .index__body,
 .index__row:focus-within .index__num {
-  transform: translateX(0.5rem);
+  transform: translateX(0.4rem);
 }
 
 .index__num {
@@ -80,7 +83,7 @@ import { services, contacts } from '../content'
   font-style: italic;
   font-weight: 600;
   font-size: var(--fs-small);
-  color: var(--accent-text);
+  color: var(--brand-olive);
 }
 
 .index__title {
@@ -125,9 +128,13 @@ import { services, contacts } from '../content'
 }
 
 @media (max-width: 700px) {
+  .index {
+    grid-template-columns: 1fr;
+  }
+
   .index__row {
-    grid-template-columns: 2.5rem 1fr;
-    row-gap: var(--sp-2);
+    grid-template-columns: 2.25rem 1fr;
+    row-gap: var(--sp-1);
   }
 }
 </style>

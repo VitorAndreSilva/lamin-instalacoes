@@ -31,7 +31,7 @@ import { guarantees, differentiators } from '../content'
 
 <style scoped>
 .band {
-  padding-block: var(--sp-9);
+  padding-block: var(--sp-8);
 }
 
 /* selo zebrado — única ocorrência em toda a página */
@@ -42,7 +42,7 @@ import { guarantees, differentiators } from '../content'
     var(--brand-yellow) 0 10px,
     var(--brand-black) 10px 20px
   );
-  margin-bottom: var(--sp-8);
+  margin-bottom: var(--sp-7);
 }
 
 .band__grid {
@@ -67,9 +67,9 @@ import { guarantees, differentiators } from '../content'
 .band__diffs {
   display: flex;
   flex-direction: column;
-  gap: var(--sp-3);
-  margin-top: var(--sp-6);
-  padding-top: var(--sp-5);
+  gap: var(--sp-2);
+  margin-top: var(--sp-5);
+  padding-top: var(--sp-4);
   border-top: var(--hairline) solid var(--border);
   font-size: var(--fs-body);
   font-weight: 500;
@@ -82,7 +82,7 @@ import { guarantees, differentiators } from '../content'
   background: var(--accent);
   color: var(--accent-ink);
   border: var(--rule) solid var(--accent-ink);
-  padding: var(--sp-6);
+  padding: var(--sp-5);
 }
 
 .band__labelhead {
@@ -99,7 +99,7 @@ import { guarantees, differentiators } from '../content'
   display: flex;
   align-items: center;
   gap: var(--sp-3);
-  padding: var(--sp-4) 0;
+  padding: var(--sp-3) 0;
   border-bottom: var(--hairline) solid rgba(10, 10, 10, 0.25);
   font-family: var(--font-display);
   font-weight: 700;

@@ -32,7 +32,7 @@ export const nav = [
 ]
 
 export const hero = {
-  lead: 'Instalações elétricas residenciais e comerciais. Atendimento com rapidez, segurança, garantia e orçamento por escrito.',
+  lead: 'Instalações elétricas residenciais e comerciais, com orçamento por escrito e garantia.',
   trust: ['Orçamento sem compromisso', 'Atendimento de urgência', 'Garantia em todos os serviços'],
 }
 
@@ -42,35 +42,35 @@ export const services = {
   list: [
     {
       title: 'Instalações Elétricas Residenciais',
-      desc: 'Tomadas, interruptores, pontos de luz e circuitos internos instalados com total segurança.',
+      desc: 'Tomadas, interruptores, pontos de luz e circuitos internos.',
     },
     {
       title: 'Instalações Elétricas Comerciais',
-      desc: 'Lojas, escritórios e empresas com projetos elétricos sob medida e conformidade com as normas.',
+      desc: 'Lojas, escritórios e empresas, conforme as normas.',
     },
     {
       title: 'Quadros de Distribuição',
-      desc: 'Montagem, reforma e dimensionamento de quadros, disjuntores e proteções DR e DPS.',
+      desc: 'Montagem, reforma e proteções DR e DPS.',
     },
     {
       title: 'Iluminação',
-      desc: 'Projetos de iluminação interna e externa: luminárias, spots e pontos de luz. Tecnologia LED.',
+      desc: 'Luminárias, spots e pontos de luz, interna e externa.',
     },
     {
       title: 'Chuveiros e Eletrodomésticos',
-      desc: 'Instalação de chuveiros, torneiras elétricas e pontos de força para geladeira, fogão e máquinas.',
+      desc: 'Chuveiros, torneiras elétricas e pontos de força.',
     },
     {
       title: 'Ventiladores e Exaustores',
-      desc: 'Instalação e troca de ventiladores de teto, exaustores e arandelas.',
+      desc: 'Ventiladores de teto, exaustores e arandelas.',
     },
     {
       title: 'Reformas e Aterramentos',
-      desc: 'Reforma de instalações antigas, aterramento e adequação às normas técnicas (NBR).',
+      desc: 'Reforma de instalações antigas e aterramento (NBR).',
     },
     {
       title: 'Emergências Elétricas',
-      desc: 'Curto-circuito, falta de energia e panes elétricas. Atendimento rápido de urgência.',
+      desc: 'Curto-circuito e panes, com atendimento rápido.',
     },
   ],
 }
@@ -78,7 +78,7 @@ export const services = {
 export const guarantees = {
   eyebrow: 'Transparência',
   title: 'Tudo incluído',
-  text: 'Sem letras miúdas. Todo serviço sai com as mesmas condições, para você comparar qualquer orçamento com o nosso.',
+  text: 'Sem letras miúdas: todo serviço sai com as mesmas condições.',
   list: [
     'Orçamento por escrito',
     'Garantia do serviço',
@@ -121,8 +121,7 @@ export const about = {
   eyebrow: 'Sobre',
   title: 'Quem executa o serviço',
   paragraphs: [
-    'Serviços de instalação elétrica para residências e empresas em Itinga, Joinville e região.',
-    'Atendimento direto e orçamento por escrito, sem compromisso. Cada serviço é feito com segurança, pontualidade e cuidado com o seu ambiente.',
+    'Serviços de instalação elétrica para residências e empresas em Itinga, Joinville e região, com orçamento por escrito e sem compromisso.',
   ],
   values: [
     {
@@ -172,5 +171,5 @@ export const faqs = {
 export const contact = {
   eyebrow: 'Contato',
   title: 'Fale conosco',
-  text: 'Descreva o que você precisa pelo WhatsApp e receba um orçamento sem compromisso.',
+  text: 'Descreva o que você precisa pelo WhatsApp e receba um orçamento.',
 }

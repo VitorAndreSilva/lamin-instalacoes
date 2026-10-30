@@ -67,7 +67,7 @@ import { about, brand, contacts } from '../content'
 }
 
 .about__value {
-  padding: var(--sp-6);
+  padding: var(--sp-5) var(--sp-6);
 }
 
 .about__value:nth-child(odd) {

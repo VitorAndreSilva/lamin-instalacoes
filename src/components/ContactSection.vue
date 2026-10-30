@@ -93,7 +93,7 @@ const channels = [
 
 <style scoped>
 .contact {
-  padding-block: var(--sp-10);
+  padding-block: var(--sp-9);
   border-top: var(--rule) solid var(--accent);
 }
 
@@ -170,8 +170,8 @@ const channels = [
   display: grid;
   grid-template-columns: 7.5rem 1fr auto;
   align-items: center;
-  gap: var(--sp-5);
-  padding: var(--sp-4) 0;
+  gap: var(--sp-4);
+  padding: var(--sp-3) 0;
   border-bottom: var(--hairline) solid var(--border);
 }
 

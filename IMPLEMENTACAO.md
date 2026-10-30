@@ -1,22 +1,25 @@
-Aprovo a direção artística proposta pelo Designer e autorizo a implementação das melhorias em toda a landing page.
+A landing page da Lamin já está funcional e estruturada. Quero uma revisão visual completa, preservando a arquitetura e as informações comerciais.
 
-Priorize a criação da linguagem visual "linha Lamin", inspirada no fio condutor presente no logotipo original.
+Leia as novas diretrizes de refinamento visual do AGENTS.md.
 
-Implemente as alterações propostas para Hero, Services, Guarantees, Steps, About, tokens visuais e Footer, preservando a arquitetura e o conteúdo comercial existente.
+Implemente em toda a aplicação as seguintes melhorias:
 
-Orientações adicionais:
+1. Reduza a quantidade de texto visível e o tamanho exagerado de cards, sem perder informações essenciais.
+2. Melhore a composição e a variedade visual das seções, evitando layouts repetitivos.
+3. Analise `public/lamin.jpeg` para identificar a paleta original. Se não conseguir interpretar a imagem, não invente valores: informe a limitação.
+4. Diminua a predominância do amarelo, mantendo-o como principal destaque depois do preto.
+5. Amplie o uso criterioso dos tons oliva e das cores secundárias da marca.
+6. Implemente um modo claro verdadeiro, com superfícies, textos, bordas e componentes próprios, e mantenha o modo escuro.
+7. Corrija a alternância de tema, incluindo preferência inicial do sistema e persistência da escolha.
+8. Preserve a linguagem visual inspirada no fio elétrico da marca.
+9. Mantenha todas as seções, a navegação e os contatos funcionando.
 
-1. Os elementos gráficos devem reforçar a identidade, não competir com o conteúdo.
-2. A faixa zebrada de Guarantees é uma hipótese visual: utilize-a somente se o resultado for elegante e equilibrado.
-3. A composição em circuito da seção Steps deve funcionar igualmente bem em desktop e mobile.
-4. A redução dos botões repetidos não deve prejudicar a clareza ou a acessibilidade dos links de orçamento.
-5. Ajuste tipografia, cores e espaçamentos com atenção ao contraste e à responsividade.
-6. Não altere informações comerciais sem confirmação.
-7. Não adicione dependências desnecessárias.
-8. Preserve o funcionamento atual da aplicação.
+Faça a revisão de todos os componentes, não apenas da Hero.
 
-Sobre o segundo telefone do banner: mantenha-o fora do site por enquanto, até que eu confirme se ele está ativo. Não remova nem altere o número principal já confirmado.
+Após implementar, execute o build e valide o funcionamento.
 
-Execute as melhorias completas e, ao terminar, faça o build e verifique a aplicação em resoluções desktop e mobile. Corrija quaisquer erros introduzidos.
+Se houver Playwright configurado, gere screenshots desktop e mobile em ambos os temas. Verifique que a alternância realmente muda as cores computadas dos componentes.
 
-Não considere a implementação concluída sem verificar o resultado funcional. Se não conseguir realizar uma inspeção visual real, informe essa limitação.
+Corrija os problemas encontrados antes de concluir.
+
+Não faça uma reconstrução desnecessária do projeto e não adicione dependências de UI sem justificativa.
