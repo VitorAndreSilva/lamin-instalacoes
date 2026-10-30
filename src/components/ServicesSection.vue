@@ -136,5 +136,9 @@ import { services, contacts } from '../content'
     grid-template-columns: 2.25rem 1fr;
     row-gap: var(--sp-1);
   }
+
+  .index__title {
+    font-size: 1.15rem;
+  }
 }
 </style>

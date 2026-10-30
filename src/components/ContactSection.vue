@@ -42,26 +42,28 @@ const channels = [
       </header>
 
       <div class="contact__grid">
-        <a
-          class="btn btn--primary contact__cta"
-          :href="contacts.whatsapp"
-          target="_blank"
-          rel="noopener"
-        >
-          <span class="contact__ctaicon" v-html="wa"></span>
-          Conversar no WhatsApp
-        </a>
+        <div class="contact__left">
+          <a
+            class="btn btn--primary contact__cta"
+            :href="contacts.whatsapp"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="contact__ctaicon" v-html="wa"></span>
+            Conversar no WhatsApp
+          </a>
 
-        <dl class="contact__meta">
-          <div class="contact__metarow">
-            <dt>Responsável</dt>
-            <dd>{{ brand.professional }}</dd>
-          </div>
-          <div class="contact__metarow">
-            <dt>Atendimento</dt>
-            <dd>{{ contacts.region }}</dd>
-          </div>
-        </dl>
+          <dl class="contact__meta">
+            <div class="contact__metarow">
+              <dt>Responsável</dt>
+              <dd>{{ brand.professional }}</dd>
+            </div>
+            <div class="contact__metarow">
+              <dt>Atendimento</dt>
+              <dd>{{ contacts.region }}</dd>
+            </div>
+          </dl>
+        </div>
 
         <ul class="contact__rows">
           <li
@@ -160,6 +162,13 @@ const channels = [
 .contact__metarow dd {
   color: var(--on-brand);
   font-size: var(--fs-body);
+}
+
+.contact__left {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--sp-5);
 }
 
 .contact__rows {

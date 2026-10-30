@@ -45,7 +45,7 @@
   --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-text: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --fs-giant: clamp(2.7rem, 6.8vw, 5.1rem);
+  --fs-giant: clamp(2.6rem, 5.6vw, 4.5rem);
   --fs-big: clamp(1.9rem, 4.2vw, 2.9rem);
   --fs-mid: clamp(1.3rem, 2.1vw, 1.75rem);
   --fs-lead: 1.06rem;

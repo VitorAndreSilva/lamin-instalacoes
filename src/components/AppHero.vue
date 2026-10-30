@@ -5,10 +5,6 @@ import { wa } from './icons'
 
 <template>
   <section id="top" class="hero surface-brand">
-    <div class="hero__circuit" aria-hidden="true">
-      <span class="hero__cirnode"></span>
-    </div>
-
     <div class="container hero__grid">
       <div class="hero__main">
         <p class="eyebrow">{{ brand.professional }}</p>
@@ -82,51 +78,9 @@ import { wa } from './icons'
 
 <style scoped>
 .hero {
-  position: relative;
   padding-top: calc(var(--header-h) + var(--sp-8));
   padding-bottom: var(--sp-8);
   border-bottom: var(--rule) solid var(--accent);
-}
-
-/* ---------- Fio condutor (canto superior direito) ---------- */
-
-.hero__circuit {
-  display: none;
-  position: absolute;
-  top: calc(var(--header-h) + var(--sp-6));
-  right: var(--gutter);
-  width: min(260px, 22vw);
-  height: 96px;
-  pointer-events: none;
-}
-
-.hero__circuit::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: var(--trace-w);
-  background: var(--border-on-brand-strong);
-}
-
-.hero__circuit::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--trace-w);
-  height: 100%;
-  background: var(--border-on-brand-strong);
-}
-
-.hero__cirnode {
-  position: absolute;
-  bottom: -4px;
-  left: -3.5px;
-  width: var(--node-size);
-  height: var(--node-size);
-  background: var(--brand-yellow);
 }
 
 /* ---------- Composição ---------- */
@@ -269,12 +223,6 @@ import { wa } from './icons'
 }
 
 /* ---------- Responsivo ---------- */
-
-@media (min-width: 901px) {
-  .hero__circuit {
-    display: block;
-  }
-}
 
 @media (max-width: 900px) {
   .hero {
