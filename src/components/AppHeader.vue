@@ -89,15 +89,12 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   z-index: 100;
-  background: var(--surface-brand);
-  --text: var(--on-brand);
-  --text-muted: var(--on-brand-muted);
-  --border: var(--border-on-brand);
-  --border-strong: var(--border-on-brand-strong);
-  --accent-text: var(--accent-on-brand);
+  background: var(--bg);
   color: var(--text);
   border-bottom: var(--hairline) solid transparent;
-  transition: border-color var(--dur) var(--ease);
+  transition:
+    border-color var(--dur) var(--ease),
+    background-color var(--dur) var(--ease);
 }
 
 .header--scrolled {
@@ -218,7 +215,7 @@ onUnmounted(() => {
     align-items: stretch;
     gap: 0;
     padding: calc(var(--header-h) + var(--sp-7)) var(--gutter) var(--sp-9);
-    background: var(--surface-brand);
+    background: var(--bg);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);

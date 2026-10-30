@@ -7,9 +7,7 @@ import { services, contacts } from '../content'
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">{{ services.eyebrow }}</p>
-        <h2 class="section-head__title">
-          Do ponto de luz ao <span class="text-accent">quadro geral</span>
-        </h2>
+        <h2 class="section-head__title">Do ponto de luz ao quadro geral</h2>
       </header>
 
       <ul class="index">

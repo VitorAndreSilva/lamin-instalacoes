@@ -18,12 +18,12 @@ import { guarantees, differentiators } from '../content'
           </ul>
         </div>
 
-        <aside class="band__label">
-          <p class="band__labelhead">Incluído em todo serviço</p>
+        <div class="band__included">
+          <p class="band__includedhead">Incluído em todo serviço</p>
           <ul class="band__items">
             <li v-for="item in guarantees.list" :key="item">{{ item }}</li>
           </ul>
-        </aside>
+        </div>
       </div>
     </div>
   </section>
@@ -76,22 +76,21 @@ import { guarantees, differentiators } from '../content'
   color: var(--on-brand);
 }
 
-/* ---------- Etiqueta amarela ---------- */
+/* ---------- Lista "incluído" delimitada (antes: painel amarelo) ---------- */
 
-.band__label {
-  background: var(--accent);
-  color: var(--accent-ink);
-  border: var(--rule) solid var(--accent-ink);
-  padding: var(--sp-5);
+.band__included {
+  border: var(--hairline) solid var(--border-strong);
+  background: var(--elev-on-brand);
+  padding: var(--sp-4) var(--sp-5);
 }
 
-.band__labelhead {
+.band__includedhead {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--fs-micro);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(10, 10, 10, 0.65);
+  color: var(--brand-olive);
   margin-bottom: var(--sp-2);
 }
 
@@ -100,10 +99,11 @@ import { guarantees, differentiators } from '../content'
   align-items: center;
   gap: var(--sp-3);
   padding: var(--sp-3) 0;
-  border-bottom: var(--hairline) solid rgba(10, 10, 10, 0.25);
+  border-bottom: var(--hairline) solid var(--border);
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   font-size: var(--fs-lead);
+  color: var(--on-brand);
 }
 
 .band__items li:last-child {
@@ -114,7 +114,7 @@ import { guarantees, differentiators } from '../content'
   content: '';
   width: 7px;
   height: 7px;
-  background: var(--accent-ink);
+  background: var(--brand-yellow);
   flex: none;
 }
 

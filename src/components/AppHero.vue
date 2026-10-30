@@ -1,22 +1,19 @@
 <script setup>
-import { brand, contacts } from '../content'
+import { brand, contacts, hero } from '../content'
 import { wa } from './icons'
 </script>
 
 <template>
-  <section id="top" class="hero surface-brand">
+  <section id="top" class="hero">
     <div class="container hero__grid">
       <div class="hero__main">
-        <p class="eyebrow">{{ brand.professional }}</p>
+        <p class="eyebrow">{{ contacts.region }}</p>
 
         <h1 class="hero__title">
           Instalações elétricas <span class="text-accent">resolvidas</span> com segurança
         </h1>
 
-        <p class="hero__lead">
-          Instalações elétricas residenciais e comerciais. Atendimento com rapidez, segurança,
-          garantia e orçamento por escrito.
-        </p>
+        <p class="hero__lead">{{ hero.lead }}</p>
       </div>
 
       <aside class="hero__plate">
@@ -34,25 +31,6 @@ import { wa } from './icons'
             <dd>{{ brand.professional }}</dd>
           </div>
           <div class="plate__row">
-            <dt>WhatsApp</dt>
-            <dd>
-              <a class="plate__link" :href="contacts.tel">{{ contacts.phoneDisplay }}</a>
-            </dd>
-          </div>
-          <div class="plate__row">
-            <dt>Instagram</dt>
-            <dd>
-              <a
-                class="plate__link plate__link--sm"
-                :href="contacts.instagram"
-                target="_blank"
-                rel="noopener"
-              >
-                {{ contacts.instagramHandle }}
-              </a>
-            </dd>
-          </div>
-          <div class="plate__row">
             <dt>Atendimento</dt>
             <dd>{{ contacts.region }}</dd>
           </div>
@@ -64,13 +42,11 @@ import { wa } from './icons'
           <span class="icon" v-html="wa"></span>
           Pedir orçamento
         </a>
-        <a class="btn btn--ghost-on-brand" href="#servicos">Ver serviços</a>
+        <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
       </div>
 
       <ul class="hero__trust">
-        <li>Orçamento sem compromisso</li>
-        <li>Atendimento de urgência</li>
-        <li>Garantia em todos os serviços</li>
+        <li v-for="t in hero.trust" :key="t">{{ t }}</li>
       </ul>
     </div>
   </section>
@@ -80,7 +56,12 @@ import { wa } from './icons'
 .hero {
   padding-top: calc(var(--header-h) + var(--sp-8));
   padding-bottom: var(--sp-8);
+  background: var(--bg);
+  color: var(--text);
   border-bottom: var(--rule) solid var(--accent);
+  transition:
+    background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
 }
 
 /* ---------- Composição ---------- */
@@ -110,7 +91,6 @@ import { wa } from './icons'
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-3);
-  margin-top: var(--sp-5);
 }
 
 .hero__trust {
@@ -118,11 +98,10 @@ import { wa } from './icons'
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-2) var(--sp-5);
-  margin-top: var(--sp-4);
   padding-top: var(--sp-5);
   border-top: var(--hairline) solid var(--border);
   font-size: var(--fs-small);
-  color: var(--on-brand-muted);
+  color: var(--text-muted);
 }
 
 .hero__trust li {
@@ -143,19 +122,14 @@ import { wa } from './icons'
 
 .hero__title {
   font-size: var(--fs-giant);
-  font-weight: var(--fw-heavy);
-  letter-spacing: -0.025em;
-  margin-top: var(--sp-5);
-}
-
-.hero .text-accent {
-  color: var(--accent-on-brand);
+  font-weight: 700;
+  margin-top: var(--sp-4);
 }
 
 .hero__lead {
-  margin-top: var(--sp-5);
-  max-width: 34rem;
-  color: var(--on-brand-muted);
+  margin-top: var(--sp-4);
+  max-width: 32rem;
+  color: var(--text-muted);
   font-size: var(--fs-lead);
 }
 
@@ -163,26 +137,27 @@ import { wa } from './icons'
 
 .hero__plate {
   border: var(--hairline) solid var(--border);
-  background: var(--elev-on-brand);
-  padding: var(--sp-6) var(--sp-6) var(--sp-4);
+  background: var(--bg-elevated);
+  padding: var(--sp-5) var(--sp-5) var(--sp-3);
 }
 
 .plate__mark {
-  width: 100%;
+  width: min(100%, 21rem);
   height: auto;
 }
 
 .plate__info {
-  margin-top: var(--sp-6);
+  margin-top: var(--sp-5);
   border-top: var(--hairline) solid var(--border);
   font-size: var(--fs-small);
 }
 
 .plate__row {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: var(--sp-3) 0;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-2) 0;
   border-bottom: var(--hairline) solid var(--border);
 }
 
@@ -196,30 +171,11 @@ import { wa } from './icons'
   font-size: var(--fs-micro);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--on-brand-muted);
+  color: var(--text-dim);
 }
 
 .plate__row dd {
-  font-size: 1rem;
-  color: var(--on-brand);
-}
-
-.plate__link {
-  display: inline-block;
-  padding-block: 0.1rem;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.15rem;
-  letter-spacing: 0.02em;
-  transition: color var(--dur) var(--ease);
-}
-
-.plate__link--sm {
-  font-size: 1rem;
-}
-
-.plate__link:hover {
-  color: var(--accent-on-brand);
+  color: var(--text);
 }
 
 /* ---------- Responsivo ---------- */
@@ -241,6 +197,10 @@ import { wa } from './icons'
 
   .hero__actions .btn {
     flex: 1 1 auto;
+  }
+
+  .plate__mark {
+    width: min(100%, 19rem);
   }
 }
 

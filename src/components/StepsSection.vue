@@ -7,9 +7,7 @@ import { steps } from '../content'
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">{{ steps.eyebrow }}</p>
-        <h2 class="section-head__title">
-          Simples, rápido e <span class="text-accent">sem burocracia</span>
-        </h2>
+        <h2 class="section-head__title">Simples, rápido e sem burocracia</h2>
       </header>
 
       <ol class="steps">

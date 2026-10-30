@@ -7,9 +7,8 @@ import { about, brand, contacts } from '../content'
     <div class="container about">
       <div class="about__body">
         <p class="eyebrow">{{ about.eyebrow }}</p>
-        <h2 class="about__title">
-          {{ about.title }} <span class="text-accent">{{ brand.professional }}</span>
-        </h2>
+        <h2 class="section-head__title">{{ about.title }}</h2>
+        <p class="about__name">{{ brand.professional }}</p>
         <p v-for="p in about.paragraphs" :key="p" class="about__text">{{ p }}</p>
 
         <a
@@ -46,6 +45,14 @@ import { about, brand, contacts } from '../content'
 .about__title {
   font-size: var(--fs-big);
   margin-top: var(--sp-3);
+}
+
+/* nome do profissional — protagonismo factual, sem itálico nem destaque */
+.about__name {
+  margin-top: var(--sp-2);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--fs-mid);
 }
 
 .about__text {
