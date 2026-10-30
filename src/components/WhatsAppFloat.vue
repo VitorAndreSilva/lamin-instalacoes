@@ -1,8 +1,6 @@
 <script setup>
-import { useContactsStore } from '../stores/contacts'
-import BrandIcon from './BrandIcon.vue'
-
-const contacts = useContactsStore()
+import { contacts } from '../content'
+import { wa } from './icons'
 </script>
 
 <template>
@@ -11,11 +9,11 @@ const contacts = useContactsStore()
     :href="contacts.whatsapp"
     target="_blank"
     rel="noopener"
-    aria-label="Fale conosco no WhatsApp"
-    title="Fale conosco no WhatsApp"
+    aria-label="Conversar no WhatsApp"
+    title="Conversar no WhatsApp"
   >
-    <BrandIcon name="whatsapp" :size="22" />
-    <span class="whatsapp-float__label">Fale no WhatsApp</span>
+    <span class="whatsapp-float__icon" v-html="wa"></span>
+    <span class="whatsapp-float__label">Conversar no WhatsApp</span>
   </a>
 </template>
 
@@ -29,27 +27,30 @@ const contacts = useContactsStore()
   align-items: center;
   gap: 0.6rem;
   padding: 0.85rem 1.15rem;
-  border: var(--hairline) solid var(--accent);
-  border-radius: var(--r-none);
+  border: var(--hairline) solid var(--brand-black);
+  border-radius: var(--r);
   background: var(--accent);
   color: var(--accent-ink);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: var(--fs-200);
-  letter-spacing: 0.02em;
-  transition:
-    background-color var(--dur) var(--ease),
-    border-color var(--dur) var(--ease),
-    color var(--dur) var(--ease);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: background-color var(--dur) var(--ease);
 }
 
 .whatsapp-float:hover {
-  background: transparent;
-  color: var(--accent);
+  background: var(--accent-hover);
 }
 
-.whatsapp-float svg {
+.whatsapp-float__icon {
+  display: inline-flex;
   flex: none;
+}
+
+.whatsapp-float__icon :deep(svg) {
+  width: 18px;
+  height: 18px;
 }
 
 @media (max-width: 560px) {

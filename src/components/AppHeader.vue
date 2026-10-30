@@ -1,22 +1,15 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
-import { useContactsStore } from '../stores/contacts'
-import ThemeToggle from './ThemeToggle.vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { nav, contacts } from '../content'
 import AppLogo from './AppLogo.vue'
-
-const contacts = useContactsStore()
-const route = useRoute()
+import ThemeToggle from './ThemeToggle.vue'
 
 const scrolled = ref(false)
 const menuOpen = ref(false)
 
-const links = [
-  { to: '/', label: 'Home' },
-  { to: '/servicos', label: 'Serviços' },
-  { to: '/sobre', label: 'Sobre' },
-  { to: '/contato', label: 'Contato' },
-]
+watch(menuOpen, (open) => {
+  document.body.style.overflow = open ? 'hidden' : ''
+})
 
 function onScroll() {
   scrolled.value = window.scrollY > 8
@@ -39,54 +32,50 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onKeydown)
+  document.body.style.overflow = ''
 })
 </script>
 
 <template>
-  <header class="nav" :class="{ 'nav--scrolled': scrolled }">
-    <div class="container nav__inner">
+  <header class="header" :class="{ 'header--scrolled': scrolled }">
+    <div class="container header__inner">
       <AppLogo />
 
       <nav
         id="nav-menu"
-        class="nav__links"
-        :class="{ 'nav__links--open': menuOpen }"
+        class="nav"
+        :class="{ 'nav--open': menuOpen }"
         aria-label="Navegação principal"
       >
-        <RouterLink
-          v-for="link in links"
-          :key="link.to"
-          :to="link.to"
-          class="nav__link"
-          @click="closeMenu"
-        >
-          {{ link.label }}
-        </RouterLink>
+        <a v-for="l in nav" :key="l.to" class="nav__link" :href="l.to" @click="closeMenu">
+          {{ l.label }}
+        </a>
 
         <a
-          class="nav__cta btn btn-primary"
+          class="btn btn--primary nav__cta"
           :href="contacts.whatsapp"
           target="_blank"
           rel="noopener"
           @click="closeMenu"
         >
-          Orçamento
+          Pedir orçamento
         </a>
       </nav>
 
-      <div class="nav__actions">
-        <ThemeToggle />
+      <div class="header__actions">
+        <ThemeToggle class="header__toggle" />
         <button
           class="burger"
+          type="button"
           :class="{ 'burger--open': menuOpen }"
           :aria-expanded="menuOpen"
           aria-controls="nav-menu"
           :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
           @click="menuOpen = !menuOpen"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span class="burger__bar"></span>
+          <span class="burger__bar"></span>
+          <span class="burger__bar"></span>
         </button>
       </div>
     </div>
@@ -94,28 +83,45 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-.nav {
-  position: sticky;
+.header {
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
-  background: var(--bg);
+  background: var(--surface-brand);
+  --text: var(--on-brand);
+  --text-muted: var(--on-brand-muted);
+  --border: var(--border-on-brand);
+  --border-strong: var(--border-on-brand-strong);
+  --accent-text: var(--accent-on-brand);
+  color: var(--text);
   border-bottom: var(--hairline) solid transparent;
   transition: border-color var(--dur) var(--ease);
 }
 
-.nav--scrolled {
+.header--scrolled {
   border-bottom-color: var(--border);
 }
 
-.nav__inner {
+.header__inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-5);
-  min-height: var(--nav-height);
+  min-height: var(--header-h);
 }
 
-.nav__links {
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+/* ---------- Navegação ---------- */
+
+.nav__links,
+.nav {
   display: flex;
   align-items: center;
   gap: var(--sp-6);
@@ -126,8 +132,8 @@ onUnmounted(() => {
   padding: 0.5rem 0;
   font-family: var(--font-display);
   font-weight: 500;
-  font-size: var(--fs-200);
-  letter-spacing: var(--tr-wide);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-muted);
   transition: color var(--dur) var(--ease);
@@ -139,7 +145,7 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  height: var(--rule-weight);
+  height: var(--rule);
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
@@ -150,27 +156,18 @@ onUnmounted(() => {
   color: var(--text);
 }
 
-.nav__link:hover::after,
-.nav__link.router-link-active::after {
+.nav__link:hover::after {
   transform: scaleX(1);
-}
-
-.nav__link.router-link-active {
-  color: var(--text);
 }
 
 .nav__cta {
   padding: 0.62rem 1.15rem;
-  font-size: var(--fs-200);
+  font-size: var(--fs-micro);
   text-transform: uppercase;
-  letter-spacing: var(--tr-wide);
+  letter-spacing: 0.1em;
 }
 
-.nav__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-3);
-}
+/* ---------- Burguer ---------- */
 
 .burger {
   display: none;
@@ -180,12 +177,12 @@ onUnmounted(() => {
   width: 42px;
   height: 42px;
   border: var(--hairline) solid var(--border-strong);
-  border-radius: var(--r-none);
+  border-radius: var(--r);
   background: transparent;
   padding: 11px;
 }
 
-.burger span {
+.burger__bar {
   display: block;
   height: 2px;
   background: var(--text);
@@ -194,52 +191,54 @@ onUnmounted(() => {
     opacity var(--dur) var(--ease);
 }
 
-.burger--open span:nth-child(1) {
+.burger--open .burger__bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
 
-.burger--open span:nth-child(2) {
+.burger--open .burger__bar:nth-child(2) {
   opacity: 0;
 }
 
-.burger--open span:nth-child(3) {
+.burger--open .burger__bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
+
+/* ---------- Menu mobile fullscreen ---------- */
 
 @media (max-width: 900px) {
   .burger {
     display: flex;
   }
 
-  .nav__links {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
+  .nav {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: var(--bg);
-    border-bottom: var(--hairline) solid var(--border);
-    padding: var(--sp-2) var(--gutter) var(--sp-5);
-    transform: translateY(-6px);
+    padding: calc(var(--header-h) + var(--sp-7)) var(--gutter) var(--sp-9);
+    background: var(--surface-brand);
     opacity: 0;
     visibility: hidden;
+    transform: translateY(-8px);
     transition:
       transform var(--dur) var(--ease),
       opacity var(--dur) var(--ease),
       visibility var(--dur);
   }
 
-  .nav__links--open {
-    transform: translateY(0);
+  .nav--open {
     opacity: 1;
     visibility: visible;
+    transform: translateY(0);
   }
 
   .nav__link {
-    padding: 0.95rem 0;
+    padding: 1.1rem 0;
     border-bottom: var(--hairline) solid var(--border);
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
   }
 
   .nav__link::after {
@@ -249,8 +248,8 @@ onUnmounted(() => {
   }
 
   .nav__cta {
-    margin-top: var(--sp-5);
-    padding: 0.85rem 1.5rem;
+    margin-top: var(--sp-6);
+    padding: 0.9rem 1.5rem;
   }
 }
 </style>
