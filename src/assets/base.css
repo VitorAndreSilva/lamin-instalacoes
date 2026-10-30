@@ -203,6 +203,71 @@ ol {
   padding-inline: var(--gutter);
 }
 
+/* ---------- Seções ---------- */
+
+[id] {
+  scroll-margin-top: calc(var(--header-h) + var(--sp-4));
+}
+
+.section {
+  padding-block: var(--sp-10);
+}
+
+.section--alt {
+  background: var(--bg-soft);
+  border-block: var(--hairline) solid var(--border);
+}
+
+.section-head {
+  max-width: 44rem;
+  margin-bottom: var(--sp-8);
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.section-head__title {
+  font-size: var(--fs-big);
+  margin-top: var(--sp-3);
+}
+
+.section-head--center .section-head__title {
+  text-wrap: balance;
+}
+
+.section-head__text {
+  margin-top: var(--sp-4);
+  color: var(--text-muted);
+  font-size: var(--fs-lead);
+  max-width: 40rem;
+}
+
+.section-head--center .section-head__text {
+  margin-inline: auto;
+}
+
+/* ---------- Marcadores (nós de circuito) ---------- */
+
+.dot-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  font-weight: 500;
+  font-size: var(--fs-lead);
+  line-height: var(--lh-snug);
+}
+
+.dot-list li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  margin-top: 0.45em;
+  background: var(--accent-text);
+  flex: none;
+}
+
 /* ---------- Botões ---------- */
 
 .btn {

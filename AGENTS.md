@@ -1,138 +1,185 @@
 # AGENTS.md — Lamin Instalações Elétricas
 
-## 1. Contexto do projeto
+## Missão
 
-O projeto consiste em uma landing page para Lamin Instalações Elétricas, negócio de prestação de serviços elétricos associado a Marcos A. Lamin.
+Você está trabalhando no frontend da Lamin Instalações Elétricas, um negócio de prestação de serviços elétricos em Joinville, Santa Catarina.
 
-A aplicação é exclusivamente frontend, desenvolvida com Vue.js.
+Sua missão é reconstruir integralmente a landing page existente, entregando uma aplicação Vue completa, funcional, responsiva, elegante e pronta para publicação.
 
-Não existe backend e não há intenção de implementar um.
+O objetivo não é criar um protótipo, uma primeira dobra isolada ou uma demonstração visual. O objetivo é entregar o site completo.
 
-O objetivo é construir uma presença digital profissional, visualmente marcante, elegante e confiável, capaz de apresentar os serviços do negócio e incentivar potenciais clientes a entrar em contato.
+## Contexto técnico
 
-## 2. Relação com o projeto existente
+- O projeto é exclusivamente frontend.
+- A tecnologia principal é Vue.js.
+- Não existe backend e não deve ser criado um.
+- O repositório contém uma implementação anterior que pode ser inteiramente substituída.
+- A versão anterior deve permanecer recuperável pelo Git.
+- O agente pode reorganizar a arquitetura, componentes, estilos e dependências.
+- Não é obrigatório preservar o Vue Router ou qualquer biblioteca existente.
+- Não remover dependências ou arquivos sem avaliar seu uso.
+- Evitar complexidade arquitetural desnecessária.
 
-O repositório contém uma implementação anterior da landing page.
+## Identidade da marca
 
-Essa implementação deve ser utilizada apenas como referência para compreender a proposta comercial, os conteúdos disponíveis e as informações relevantes do negócio.
+Nome: LAMIN Instalações Elétricas.
 
-O agente possui liberdade para:
-- Reconstruir completamente a aplicação.
-- Reorganizar a estrutura de arquivos.
-- Substituir componentes e estilos existentes.
-- Redefinir a organização e a composição das seções.
-- Introduzir bibliotecas frontend quando houver justificativa.
-- Criar uma nova base Vue, caso seja mais adequado.
+Profissional associado: Marcos A. Lamin.
 
-Não é necessário preservar o design, a arquitetura ou os componentes da versão anterior.
+A referência visual principal é o material original da marca, disponível em `public/lamin.jpeg`.
 
-Entretanto, a reconstrução deve ocorrer em uma branch ou estrutura isolada, preservando a versão existente.
+Direção artística:
 
-## 3. Identidade visual
+- Identidade industrial, contemporânea e sofisticada.
+- Preto e tons escuros como base.
+- Amarelo moderado e tons oliva como destaques.
+- Possibilidade de superfícies claras em off-white quente.
+- Tipografia expressiva e excelente hierarquia visual.
+- Composições originais e equilibradas.
+- Elementos gráficos discretos inspirados em circuitos e esquemas elétricos.
+- Fotografia autêntica quando disponível.
+- Layout responsivo cuidadosamente desenvolvido.
 
-A referência principal é a identidade original da Lamin Instalações Elétricas.
+Evitar:
 
-Preservar:
-- Nome e reconhecimento visual da marca.
-- Logotipo original, quando disponível.
-- Predominância de preto e tons escuros.
-- Amarelo moderado como cor de destaque.
-- Tons amarelados próximos do oliva como apoio.
+- Aparência genérica de templates.
+- Amarelo neon ou excessivamente saturado.
+- Gradientes e sombras decorativas sem propósito.
+- Excesso de animações.
+- Elementos visuais desconectados da identidade.
+- Logotipos recriados de maneira imprecisa.
 
-O resultado não deve apresentar amarelo excessivamente saturado, efeitos neon ou uma estética genérica de tecnologia.
+Preservar o logotipo original. Caso não exista arquivo isolado adequado, utilizar a referência disponível sem inventar uma nova identidade.
 
-A direção artística desejada é industrial minimalista, elegante e contemporânea.
+## Informações comerciais
 
-O agente tem liberdade criativa para definir a composição, a tipografia, os espaçamentos, a hierarquia e os elementos visuais, desde que respeite a identidade existente.
+Centralizar os dados comerciais em um módulo de conteúdo reutilizável.
 
-## 4. Arquitetura e tecnologias
+Informações confirmadas no planejamento:
 
-A aplicação deve permanecer exclusivamente frontend.
+- Nome: LAMIN Instalações Elétricas.
+- Responsável: Marcos A. Lamin.
+- WhatsApp: https://wa.me/554799587856
+- Instagram: https://instagram.com/lamin.marcos
+- E-mail: cacolamin2009@gmail.com
+- Endereço: Rua José Alves de Braga, 125 — Itinga, Joinville/SC.
 
-Tecnologia principal: Vue.js.
+Validar a consistência dos dados antes da publicação.
 
-Prioridades:
-- Arquitetura simples e organizada.
-- Componentes reutilizáveis.
-- CSS consistente e sustentável.
-- Responsividade.
-- Acessibilidade.
-- SEO e conteúdo indexável.
-- Carregamento rápido.
-- Boa experiência em dispositivos móveis.
+Não inventar:
 
-Não introduzir:
-- Backend.
-- Banco de dados.
-- Autenticação.
-- APIs desnecessárias.
-- Serviços pagos.
-- Funcionalidades que não contribuam para a landing page.
+- Depoimentos.
+- Estatísticas de clientes ou projetos.
+- Certificações.
+- Garantias comerciais.
+- Tempo de experiência.
+- Serviços não confirmados.
+- Fotografias de trabalhos apresentados como reais.
 
-O agente pode avaliar a necessidade de bibliotecas adicionais, mas deve justificar cada dependência.
+Se não houver depoimentos verdadeiros, ocultar a seção correspondente.
 
-## 5. Estrutura e conteúdo
+## Escopo obrigatório da landing page
 
-Priorizar uma landing page objetiva, com seções como:
+Entregar a experiência completa, incluindo:
 
-1. Apresentação principal e proposta de valor.
-2. Serviços oferecidos.
-3. Apresentação do profissional.
-4. Trabalhos realizados, quando houver material disponível.
-5. Contato e solicitação de orçamento.
+1. Header responsivo com navegação funcional.
+2. Hero com proposta de valor e chamadas para contato.
+3. Apresentação dos serviços confirmados.
+4. Diferenciais fundamentados em informações reais.
+5. Explicação do processo de atendimento.
+6. Seção sobre o profissional.
+7. Depoimentos, somente quando houver conteúdo real.
+8. FAQ com informações verificáveis.
+9. Contato com canais comerciais.
+10. Footer completo.
+11. Botão flutuante de WhatsApp, se adequado à experiência.
 
-A organização e a apresentação visual dessas seções podem ser completamente repensadas.
+O agente pode reorganizar, combinar ou adaptar seções quando houver justificativa de UX, sem omitir informações comerciais essenciais.
 
-Não inventar certificações, depoimentos, experiências profissionais ou serviços não confirmados.
+## Arquitetura
 
-O contato deve ser simples, preferencialmente por meio de links diretos para WhatsApp ou outros canais oficiais.
+A aplicação pode ter uma única página pública, mas não deve concentrar toda a implementação em um componente monolítico.
 
-## 6. Qualidade visual
+Adotar uma organização coerente de:
 
-O design é a prioridade central.
+- Componentes de layout.
+- Componentes de seções.
+- Componentes compartilhados.
+- Dados de conteúdo.
+- Estilos globais e tokens visuais.
+- Assets da marca.
 
-O agente deve:
-- Criar uma identidade digital coerente com a marca.
-- Trabalhar cuidadosamente a paleta de cores.
-- Valorizar tipografia e composição.
-- Evitar excesso de elementos decorativos.
-- Utilizar fotografias autênticas quando disponíveis.
-- Garantir consistência entre as seções.
-- Verificar o resultado em desktop e mobile.
+Preservar convenções adequadas ao Vue e ao ecossistema já utilizado no projeto.
 
-Não utilizar templates genéricos ou padrões visuais repetitivos sem justificativa.
+A arquitetura deve ser simples, legível, sustentável e adequada à dimensão de uma landing page.
 
-## 7. Processo de desenvolvimento
+Não criar abstrações ou dependências desnecessárias.
 
-### Planejamento
+## Requisitos funcionais
 
-1. Analisar a ideia de negócio e a referência visual.
-2. Identificar os conteúdos essenciais.
-3. Propor uma direção artística.
-4. Definir um design system inicial.
-5. Planejar a estrutura da landing page.
+O site deve:
 
-### Implementação
+- Inicializar sem erros.
+- Renderizar a página completa.
+- Possuir navegação entre seções.
+- Apresentar links de contato funcionais.
+- Ter menu mobile utilizável.
+- Não apresentar erros de importação ou componentes ausentes.
+- Não depender de serviços pagos.
+- Não depender de backend.
+- Funcionar em dispositivos móveis e desktop.
+- Não apresentar rolagem horizontal indevida.
+- Respeitar preferências de movimento reduzido quando houver animações.
 
-1. Criar ou reconstruir a base Vue.
-2. Implementar a identidade visual.
-3. Desenvolver as seções da página.
-4. Integrar os canais de contato.
-5. Ajustar responsividade e acessibilidade.
+Qualquer recurso introduzido, como alternância de tema, deve funcionar integralmente. Não incluir controles meramente decorativos.
 
-### Validação
+## SEO e acessibilidade
 
-1. Executar a aplicação localmente.
-2. Inspecionar a interface no navegador.
-3. Verificar layout em diferentes resoluções.
-4. Corrigir inconsistências visuais.
-5. Validar navegação, links e desempenho.
-6. Revisar SEO e metadados.
+Implementar:
 
-## 8. Critério final
+- Título e descrição adequados.
+- Hierarquia semântica de headings.
+- HTML semântico.
+- Metadados sociais.
+- Dados estruturados válidos, quando aplicáveis.
+- Estratégia apropriada de indexação para Vue.
+- Textos alternativos.
+- Contraste legível.
+- Navegação por teclado.
+- Estados de foco visíveis.
+- Boa performance de carregamento.
 
-A landing page deve parecer um produto digital cuidadosamente projetado por um profissional de design e desenvolvimento.
+Não inventar URLs de produção, imagens sociais ou dados estruturados.
 
-O objetivo não é adicionar complexidade técnica ou funcionalidades desnecessárias.
+## Critérios de conclusão
 
-É transformar a identidade existente da Lamin em uma experiência web elegante, reconhecível, rápida e capaz de transmitir confiança aos visitantes.
+A tarefa somente estará concluída quando:
+
+1. Todas as seções públicas estiverem implementadas e integradas.
+2. A aplicação iniciar corretamente.
+3. O build de produção terminar sem erros.
+4. A página renderizar no navegador.
+5. A navegação e os links essenciais funcionarem.
+6. O layout tiver sido verificado em desktop e mobile.
+7. Não existirem erros de console ou recursos ausentes identificados na validação.
+8. O agente apresentar um resumo das alterações, dos testes e das limitações remanescentes.
+
+Um build bem-sucedido não substitui a validação da página renderizada.
+
+Se alguma verificação não puder ser executada, declarar explicitamente essa limitação. Nunca afirmar que algo foi testado sem realmente executar o teste.
+
+## Autonomia e execução
+
+O agente está autorizado a reconstruir o frontend completo, desde que preserve a identidade e os dados confirmados.
+
+Deve analisar o estado atual, definir uma arquitetura coerente, implementar todas as seções, integrar os componentes e corrigir problemas encontrados.
+
+Não interromper a tarefa após implementar apenas uma seção.
+
+Não solicitar aprovação entre etapas internas de implementação.
+
+Não considerar mensagens de progresso como entregas finais.
+
+Evitar operações destrutivas sobre o histórico Git ou arquivos alheios ao projeto.
+
+A entrega final deve ser uma landing page completa, executável e verificada.
