@@ -2,7 +2,7 @@
   <a href="#top" class="brand">
     <img
       class="brand__mark"
-      src="/lamin-logotipo.jpg"
+      src="/public/lamin_logotipo.png"
       alt="Lamin Instalações Elétricas"
       width="120"
       height="43"
@@ -14,10 +14,12 @@
 .brand {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
+  flex-shrink: 0;
 }
 
 .brand__mark {
-  width: 120px;
+  width: 140px;
   height: auto;
 }
 </style>

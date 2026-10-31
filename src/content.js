@@ -2,7 +2,7 @@ export const brand = {
   name: 'LAMIN',
   fullName: 'Lamin Instalações Elétricas',
   tagline: 'Instalações elétricas',
-  professional: 'Marcos A. Lamin',
+  professional: 'Marcos Alan Lamin',
 }
 
 const phone = '554799587856'
@@ -32,8 +32,8 @@ export const nav = [
 ]
 
 export const hero = {
-  lead: 'Instalações elétricas residenciais e comerciais, com orçamento por escrito e garantia.',
-  trust: ['Orçamento sem compromisso', 'Atendimento de urgência', 'Garantia em todos os serviços'],
+  title: 'Instalações elétricas para casas e empresas.',
+  lead: 'Da instalação à manutenção, atendimento em Itinga, Joinville e região.',
 }
 
 export const services = {
@@ -77,8 +77,6 @@ export const services = {
 
 export const guarantees = {
   eyebrow: 'Transparência',
-  title: 'Tudo incluído',
-  text: 'Sem letras miúdas: todo serviço sai com as mesmas condições.',
   list: [
     'Orçamento por escrito',
     'Garantia do serviço',
@@ -87,16 +85,9 @@ export const guarantees = {
   ],
 }
 
-export const differentiators = [
-  'Profissionais capacitados',
-  'Orçamento rápido, transparente e sem compromisso',
-  'Pontualidade no agendamento e no prazo',
-  'Limpeza e cuidado com o seu ambiente',
-]
-
 export const steps = {
   eyebrow: 'Como funciona',
-  title: 'Simples, rápido e sem burocracia',
+  title: 'Do primeiro contato ao serviço concluído.',
   list: [
     {
       title: 'Fale conosco',
@@ -104,42 +95,25 @@ export const steps = {
     },
     {
       title: 'Receba um orçamento',
-      desc: 'Você recebe uma proposta clara e sem surpresas para o seu projeto.',
+      desc: 'Avalie a proposta e aprove antes de iniciar o serviço.',
     },
     {
       title: 'Agende o serviço',
-      desc: 'Escolha a melhor data e horário. Atendimento flexível.',
+      desc: 'Combine a data e o horário para o atendimento.',
     },
     {
       title: 'Serviço executado',
-      desc: 'Execução com rapidez, limpeza e garantia de qualidade no resultado.',
+      desc: 'Realização do serviço combinado, com cuidado pelo seu ambiente.',
     },
   ],
 }
 
 export const about = {
   eyebrow: 'Sobre',
-  title: 'Quem executa o serviço',
+  title: 'Marcos Alan Lamin',
   paragraphs: [
-    'Serviços de instalação elétrica para residências e empresas em Itinga, Joinville e região, com orçamento por escrito e sem compromisso.',
-  ],
-  values: [
-    {
-      label: 'Segurança',
-      desc: 'Trabalhamos com equipamentos de proteção e seguimos as normas técnicas.',
-    },
-    {
-      label: 'Pontualidade',
-      desc: 'Respeitamos o compromisso: chegamos na hora e entregamos no prazo.',
-    },
-    {
-      label: 'Transparência',
-      desc: 'Orçamento claro, sem surpresas. Você aprova antes de qualquer serviço.',
-    },
-    {
-      label: 'Cuidado',
-      desc: 'Tratamos a sua casa ou empresa como se fosse nossa.',
-    },
+    'À frente da Lamin Instalações Elétricas, Marcos Alan Lamin atende residências e empresas em Itinga, Joinville e região.',
+    'O trabalho abrange instalações, manutenção e reformas elétricas, de pontos de luz e tomadas a quadros de distribuição.',
   ],
 }
 
@@ -170,6 +144,6 @@ export const faqs = {
 
 export const contact = {
   eyebrow: 'Contato',
-  title: 'Fale conosco',
+  title: 'O que você precisa resolver?',
   text: 'Descreva o que você precisa pelo WhatsApp e receba um orçamento.',
 }

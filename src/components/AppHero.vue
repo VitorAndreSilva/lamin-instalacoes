@@ -1,218 +1,97 @@
 <script setup>
-import { brand, contacts, hero } from '../content'
+import { contacts, hero } from '../content'
 import { wa } from './icons'
 </script>
 
 <template>
-  <section id="top" class="hero">
-    <div class="container hero__grid">
-      <div class="hero__main">
-        <p class="eyebrow">{{ contacts.region }}</p>
-
-        <h1 class="hero__title">
-          Instalações elétricas <span class="text-accent">resolvidas</span> com segurança
-        </h1>
-
-        <p class="hero__lead">{{ hero.lead }}</p>
+  <section id="top" class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <p class="eyebrow">Lamin Instalações Elétricas · Joinville / SC</p>
+      <div class="hero__grid">
+        <h1 id="hero-title">{{ hero.title }}</h1>
+        <div class="hero__body">
+          <p class="hero__lead">{{ hero.lead }}</p>
+          <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
+            <span class="icon" aria-hidden="true" v-html="wa"></span>
+            Pedir orçamento
+          </a>
+          <p class="hero__note">Conte o que precisa. O orçamento é sem compromisso.</p>
+        </div>
       </div>
-
-      <aside class="hero__plate">
-        <img
-          class="plate__mark"
-          src="/lamin-logotipo.jpg"
-          alt="Lamin Instalações Elétricas"
-          width="570"
-          height="205"
-        />
-
-        <dl class="plate__info">
-          <div class="plate__row">
-            <dt>Responsável</dt>
-            <dd>{{ brand.professional }}</dd>
-          </div>
-          <div class="plate__row">
-            <dt>Atendimento</dt>
-            <dd>{{ contacts.region }}</dd>
-          </div>
-        </dl>
-      </aside>
-
-      <div class="hero__actions">
-        <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
-          <span class="icon" v-html="wa"></span>
-          Pedir orçamento
-        </a>
-        <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
+      <div class="hero__base">
+        <p>Instalação, manutenção e reforma</p>
+        <a href="#servicos">Conheça os serviços <span aria-hidden="true">↓</span></a>
       </div>
-
-      <ul class="hero__trust">
-        <li v-for="t in hero.trust" :key="t">{{ t }}</li>
-      </ul>
     </div>
   </section>
 </template>
 
 <style scoped>
 .hero {
-  padding-top: calc(var(--header-h) + var(--sp-8));
-  padding-bottom: var(--sp-8);
+  padding-top: clamp(3rem, 7vw, 6rem);
   background: var(--bg);
-  color: var(--text);
-  border-bottom: var(--rule) solid var(--accent);
-  transition:
-    background-color var(--dur) var(--ease),
-    color var(--dur) var(--ease);
 }
-
-/* ---------- Composição ---------- */
-
 .hero__grid {
   display: grid;
-  grid-template-columns: 1.08fr 0.92fr;
-  grid-template-areas:
-    'main plate'
-    'actions plate'
-    'trust plate';
-  column-gap: clamp(3rem, 6vw, 5rem);
-  row-gap: var(--sp-6);
+  grid-template-columns: 1.35fr 1fr;
   align-items: start;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: 1.75rem 3.5rem;
 }
-
-.hero__main {
-  grid-area: main;
-}
-
-.hero__plate {
-  grid-area: plate;
-}
-
-.hero__actions {
-  grid-area: actions;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-3);
-}
-
-.hero__trust {
-  grid-area: trust;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--sp-2) var(--sp-5);
-  padding-top: var(--sp-5);
-  border-top: var(--hairline) solid var(--border);
-  font-size: var(--fs-small);
-  color: var(--text-muted);
-}
-
-.hero__trust li {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-
-.hero__trust li::before {
-  content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--brand-olive);
-  flex: none;
-}
-
-/* ---------- Tipografia ---------- */
-
-.hero__title {
+h1 {
+  max-width: 14ch;
   font-size: var(--fs-giant);
-  font-weight: 700;
-  margin-top: var(--sp-4);
+  line-height: 1.12;
+  letter-spacing: -0.035em;
 }
-
 .hero__lead {
-  margin-top: var(--sp-4);
-  max-width: 32rem;
-  color: var(--text-muted);
+  max-width: 30ch;
   font-size: var(--fs-lead);
+  color: var(--text-muted);
+  margin-bottom: var(--sp-5);
 }
-
-/* ---------- Placa (eco do banner) ---------- */
-
-.hero__plate {
-  border: var(--hairline) solid var(--border);
-  background: var(--bg-elevated);
-  padding: var(--sp-5) var(--sp-5) var(--sp-3);
-}
-
-.plate__mark {
-  width: min(100%, 21rem);
-  height: auto;
-}
-
-.plate__info {
-  margin-top: var(--sp-5);
-  border-top: var(--hairline) solid var(--border);
+.hero__note {
+  margin-top: var(--sp-3);
+  max-width: 32ch;
+  color: var(--text-muted);
   font-size: var(--fs-small);
 }
-
-.plate__row {
+.hero__base {
   display: flex;
-  align-items: baseline;
   justify-content: space-between;
+  align-items: center;
   gap: var(--sp-4);
-  padding: var(--sp-2) 0;
-  border-bottom: var(--hairline) solid var(--border);
+  padding-block: var(--sp-4);
+  border-top: 1px solid var(--border-strong);
+  color: var(--text-muted);
+  font-size: var(--fs-small);
 }
-
-.plate__row:last-child {
-  border-bottom: 0;
-}
-
-.plate__row dt {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.plate__row dd {
+.hero__base a {
+  display: inline-flex;
+  gap: var(--sp-5);
+  align-items: center;
+  min-height: 44px;
   color: var(--text);
 }
-
-/* ---------- Responsivo ---------- */
-
-@media (max-width: 900px) {
-  .hero {
-    padding-top: calc(var(--header-h) + var(--sp-7));
-    padding-bottom: var(--sp-8);
-  }
-
+.hero__base a:hover {
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
   .hero__grid {
     grid-template-columns: 1fr;
-    grid-template-areas:
-      'main'
-      'plate'
-      'actions'
-      'trust';
+    gap: var(--sp-6);
+    padding-bottom: var(--sp-7);
   }
-
-  .hero__actions .btn {
-    flex: 1 1 auto;
+  h1 {
+    max-width: 17ch;
   }
-
-  .plate__mark {
-    width: min(100%, 19rem);
+  .hero__lead {
+    max-width: 34ch;
   }
-}
-
-@media (max-width: 520px) {
-  .hero__actions {
-    flex-direction: column;
-  }
-
-  .hero__trust {
-    flex-direction: column;
+  .hero__base {
     align-items: flex-start;
-    gap: var(--sp-3);
+    flex-direction: column;
+    gap: 0;
   }
 }
 </style>

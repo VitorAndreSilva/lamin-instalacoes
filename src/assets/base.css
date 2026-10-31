@@ -1,11 +1,12 @@
 /* ==========================================================================
-   LAMIN — Design System v2.2 (dark-first)
+   LAMIN — Versão 1 · tema claro
    Paleta extraída de public/lamin.jpeg por amostragem:
    fundo #000000 · amarelo do logo #e6e83d · branco quente #d5d4cc
    · oliva de apoio #b1b18c–#d2d4b2 · tomada esverdeada #dee5d2
    ========================================================================== */
 
 :root {
+  color-scheme: light;
   /* ---------- Marca ---------- */
   --brand-black: #000000;
   --brand-yellow: #e6e83d;
@@ -45,21 +46,21 @@
   --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-text: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
-  --fs-giant: clamp(2.35rem, 4.8vw, 3.5rem);
-  --fs-big: clamp(1.8rem, 3.6vw, 2.5rem);
-  --fs-mid: clamp(1.3rem, 2.1vw, 1.75rem);
-  --fs-lead: 1.06rem;
-  --fs-body: 0.95rem;
-  --fs-small: 0.83rem;
-  --fs-micro: 0.72rem;
+  --fs-giant: clamp(2.25rem, 4vw, 3.25rem);
+  --fs-big: clamp(1.6rem, 2.6vw, 2rem);
+  --fs-mid: clamp(1.1rem, 1.5vw, 1.25rem);
+  --fs-lead: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
 
-  --lh-display: 1.08;
+  --lh-display: 1.2;
   --lh-snug: 1.3;
   --lh-base: 1.68;
 
   --tr-display: -0.02em;
 
-  --tr-label: 0.18em;
+  --tr-label: 0.1em;
 
   /* ---------- Espaçamento (base 4px) ---------- */
   --sp-1: 0.25rem;
@@ -91,24 +92,7 @@
   --dur: 0.18s;
 }
 
-/* ---------- Tema escuro (padrão, qualidade prioritária) ---------- */
-
-html.dark {
-  --bg: #000000;
-  --bg-soft: #14140d;
-  --bg-elevated: #1a1a12;
-  --text: #ececdd;
-  --text-muted: #b1b18c;
-  --text-dim: #7d7b64;
-  --border: #26261f;
-  --border-strong: #3a392f;
-
-  --accent-text: var(--brand-yellow);
-  --accent-soft: rgba(230, 232, 61, 0.12);
-  --eyebrow: var(--brand-olive);
-}
-
-/* ---------- Superfície da marca (preto em ambos os temas) ---------- */
+/* ---------- Contraste editorial: rodapé da marca ---------- */
 
 .surface-brand {
   --bg: var(--surface-brand);
@@ -145,10 +129,6 @@ body {
   line-height: var(--lh-base);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
-  transition:
-    background-color 0.25s var(--ease),
-    color 0.25s var(--ease);
 }
 
 #app {
@@ -163,7 +143,7 @@ h3,
 h4 {
   font-family: var(--font-display);
   line-height: var(--lh-display);
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: var(--tr-display);
   text-wrap: balance;
 }
@@ -225,7 +205,7 @@ ol {
 }
 
 .section {
-  padding-block: var(--sp-9);
+  padding-block: clamp(3rem, 6vw, 5rem);
 }
 
 .section--alt {
@@ -298,6 +278,7 @@ ol {
   font-size: var(--fs-small);
   letter-spacing: 0.01em;
   line-height: 1.2;
+  min-height: 46px;
   text-align: center;
   transition:
     background-color var(--dur) var(--ease),
@@ -353,7 +334,7 @@ ol {
   color: var(--accent-text);
 }
 
-html:not(.dark) .text-accent {
+.text-accent {
   text-decoration: underline;
   text-decoration-color: var(--accent);
   text-decoration-thickness: 0.1em;
@@ -364,8 +345,7 @@ html:not(.dark) .text-accent {
 
 .eyebrow {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
   font-size: var(--fs-micro);
   letter-spacing: var(--tr-label);
   text-transform: uppercase;

@@ -4,7 +4,7 @@ import { faqs } from '../content'
 
 <template>
   <section id="faq" class="section section--alt">
-    <div class="container">
+    <div class="container faq-layout">
       <header class="section-head">
         <p class="eyebrow">{{ faqs.eyebrow }}</p>
         <h2 class="section-head__title">{{ faqs.title }}</h2>
@@ -24,6 +24,14 @@ import { faqs } from '../content'
 </template>
 
 <style scoped>
+.faq-layout {
+  display: grid;
+  grid-template-columns: 0.8fr 1.4fr;
+  gap: var(--sp-9);
+}
+.section-head {
+  margin-bottom: 0;
+}
 .faq {
   max-width: 48rem;
   border-top: var(--hairline) solid var(--border);
@@ -38,10 +46,10 @@ import { faqs } from '../content'
   align-items: center;
   justify-content: space-between;
   gap: var(--sp-5);
-  padding: var(--sp-5) 0;
+  padding: 1.125rem 0;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: var(--fs-lead);
+  font-weight: 500;
+  font-size: var(--fs-body);
   list-style: none;
   transition: color var(--dur) var(--ease);
 }
@@ -71,7 +79,7 @@ import { faqs } from '../content'
 
 .faq__item[open] .faq__marker::before,
 .faq__item[open] .faq__marker::after {
-  background: var(--accent);
+  background: var(--accent-text);
 }
 
 .faq__marker::before {
@@ -97,5 +105,11 @@ import { faqs } from '../content'
   color: var(--text-muted);
   font-size: var(--fs-body);
   max-width: 42rem;
+}
+@media (max-width: 700px) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
 }
 </style>

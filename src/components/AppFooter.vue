@@ -1,5 +1,6 @@
 <script setup>
-import { brand, contacts } from '../content'
+import { brand, contacts, nav } from '../content'
+import AppLogo from './AppLogo.vue'
 
 const year = new Date().getFullYear()
 </script>
@@ -7,123 +8,70 @@ const year = new Date().getFullYear()
 <template>
   <footer class="footer surface-brand">
     <div class="container">
-      <span class="footer__wire" aria-hidden="true"></span>
-    </div>
-
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <img
-          class="footer__logo"
-          src="/lamin-logotipo.jpg"
-          alt="Lamin Instalações Elétricas"
-          width="570"
-          height="205"
-        />
+      <div class="footer__top">
+        <AppLogo />
+        <nav class="footer__nav" aria-label="Navegação do rodapé">
+          <a v-for="link in nav" :key="link.to" :href="link.to">{{ link.label }}</a>
+          <a href="#top">Voltar ao início <span aria-hidden="true">↑</span></a>
+        </nav>
       </div>
-
-      <ul class="footer__links">
-        <li>
-          <a :href="contacts.tel">{{ contacts.phoneDisplay }}</a>
-        </li>
-        <li>
-          <a :href="`mailto:${contacts.email}`">{{ contacts.email }}</a>
-        </li>
-        <li>
-          <a :href="contacts.instagram" target="_blank" rel="noopener">{{
-            contacts.instagramHandle
-          }}</a>
-        </li>
-        <li>
-          <span>{{ contacts.fullAddress }}</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="container footer__base">
-      <p>© {{ year }} {{ brand.fullName }}</p>
-      <p>{{ contacts.city }}</p>
+      <div class="footer__base">
+        <p>© {{ year }} {{ brand.fullName }}</p>
+        <p>{{ brand.professional }} · {{ contacts.city }}</p>
+      </div>
     </div>
   </footer>
 </template>
 
 <style scoped>
 .footer {
-  padding-top: var(--sp-8);
+  padding-block: var(--sp-6);
 }
-
-/* fio final — o condutor encerra num ponto */
-.footer__wire {
-  position: relative;
-  display: block;
-  width: 160px;
-  height: var(--trace-w);
-  background: var(--border-on-brand-strong);
-}
-
-.footer__wire::before {
-  content: '';
-  position: absolute;
-  top: -4px;
-  left: 0;
-  width: var(--node-size);
-  height: var(--node-size);
-  background: var(--brand-yellow);
-}
-
-.footer__grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: var(--sp-9);
-  align-items: center;
-  padding-top: var(--sp-7);
-  padding-bottom: var(--sp-8);
-}
-
-.footer__logo {
-  width: min(100%, 210px);
-  height: auto;
-}
-
-.footer__links {
+.footer__top {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: var(--sp-2) var(--sp-6);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-5);
+  padding-bottom: var(--sp-5);
+}
+.footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-5);
   font-size: var(--fs-small);
-  color: var(--on-brand-muted);
 }
-
-.footer__links a {
-  padding: 0.25rem 0;
+.footer__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  gap: var(--sp-3);
   color: var(--on-brand);
-  transition: color var(--dur) var(--ease);
 }
-
-.footer__links a:hover {
-  color: var(--accent-on-brand);
+.footer__nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
-
 .footer__base {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--sp-2) var(--sp-5);
-  padding-block: var(--sp-5);
-  border-top: var(--hairline) solid var(--border);
-  font-size: var(--fs-micro);
+  padding-top: var(--sp-5);
+  border-top: 1px solid var(--border);
   color: var(--on-brand-muted);
+  font-size: var(--fs-small);
 }
-
 @media (max-width: 700px) {
-  .footer__grid {
-    grid-template-columns: 1fr;
-    gap: var(--sp-7);
-  }
-
-  .footer__links {
-    justify-content: flex-start;
+  .footer__top {
+    align-items: flex-start;
     flex-direction: column;
-    gap: var(--sp-2);
+  }
+  .footer__nav {
+    column-gap: var(--sp-4);
+  }
+  .footer__base {
+    flex-direction: column;
   }
 }
 </style>

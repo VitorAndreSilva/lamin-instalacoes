@@ -1,56 +1,59 @@
 <script setup>
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { nav, contacts } from '../content'
 import AppLogo from './AppLogo.vue'
-import ThemeToggle from './ThemeToggle.vue'
 
-const scrolled = ref(false)
 const menuOpen = ref(false)
-
-watch(menuOpen, (open) => {
-  document.body.style.overflow = open ? 'hidden' : ''
-})
-
-function onScroll() {
-  scrolled.value = window.scrollY > 8
-}
-
+const menuButton = ref(null)
+let desktopQuery
 function closeMenu() {
   menuOpen.value = false
 }
-
-function onKeydown(e) {
-  if (e.key === 'Escape' && menuOpen.value) closeMenu()
+function onKeydown(event) {
+  if (event.key === 'Escape' && menuOpen.value) {
+    closeMenu()
+    menuButton.value?.focus()
+  }
 }
-
+function onFocusout(event) {
+  if (!event.currentTarget.contains(event.relatedTarget)) closeMenu()
+}
 onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('keydown', onKeydown)
-  onScroll()
+  desktopQuery = window.matchMedia('(min-width: 901px)')
+  desktopQuery.addEventListener('change', closeMenu)
 })
-
 onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onKeydown)
-  document.body.style.overflow = ''
+  desktopQuery?.removeEventListener('change', closeMenu)
 })
 </script>
 
 <template>
-  <header class="header" :class="{ 'header--scrolled': scrolled }">
+  <header class="header" @focusout="onFocusout">
     <div class="container header__inner">
-      <AppLogo />
-
+      <AppLogo @click="closeMenu" />
+      <button
+        ref="menuButton"
+        class="burger"
+        type="button"
+        :aria-expanded="menuOpen"
+        aria-controls="nav-menu"
+        :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
+        @click="menuOpen = !menuOpen"
+      >
+        {{ menuOpen ? 'Fechar' : 'Menu' }}
+        <span aria-hidden="true">{{ menuOpen ? '−' : '+' }}</span>
+      </button>
       <nav
         id="nav-menu"
         class="nav"
         :class="{ 'nav--open': menuOpen }"
         aria-label="Navegação principal"
       >
-        <a v-for="l in nav" :key="l.to" class="nav__link" :href="l.to" @click="closeMenu">
-          {{ l.label }}
+        <a v-for="link in nav" :key="link.to" class="nav__link" :href="link.to" @click="closeMenu">
+          {{ link.label }}
         </a>
-
         <a
           class="btn btn--primary nav__cta"
           :href="contacts.whatsapp"
@@ -58,49 +61,21 @@ onUnmounted(() => {
           rel="noopener"
           @click="closeMenu"
         >
-          Pedir orçamento
+          Pedir orçamento <span aria-hidden="true">↗</span>
         </a>
       </nav>
-
-      <div class="header__actions">
-        <ThemeToggle class="header__toggle" />
-        <button
-          class="burger"
-          type="button"
-          :class="{ 'burger--open': menuOpen }"
-          :aria-expanded="menuOpen"
-          aria-controls="nav-menu"
-          :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
-          @click="menuOpen = !menuOpen"
-        >
-          <span class="burger__bar"></span>
-          <span class="burger__bar"></span>
-          <span class="burger__bar"></span>
-        </button>
-      </div>
     </div>
   </header>
 </template>
 
 <style scoped>
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
   z-index: 100;
   background: var(--bg);
-  color: var(--text);
-  border-bottom: var(--hairline) solid transparent;
-  transition:
-    border-color var(--dur) var(--ease),
-    background-color var(--dur) var(--ease);
+  border-bottom: 1px solid var(--border);
 }
-
-.header--scrolled {
-  border-bottom-color: var(--border);
-}
-
 .header__inner {
   display: flex;
   align-items: center;
@@ -108,145 +83,65 @@ onUnmounted(() => {
   gap: var(--sp-5);
   min-height: var(--header-h);
 }
-
-.header__actions {
-  display: flex;
-  align-items: center;
-  gap: var(--sp-2);
-}
-
-/* ---------- Navegação ---------- */
-
-.nav__links,
 .nav {
   display: flex;
   align-items: center;
   gap: var(--sp-6);
 }
-
 .nav__link {
-  position: relative;
-  padding: 0.5rem 0;
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--text-muted);
-  transition: color var(--dur) var(--ease);
+  font-size: var(--fs-small);
 }
-
-.nav__link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--rule);
-  background: var(--accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur) var(--ease);
-}
-
 .nav__link:hover {
   color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }
-
-.nav__link:hover::after {
-  transform: scaleX(1);
-}
-
 .nav__cta {
-  padding: 0.62rem 1.15rem;
-  font-size: var(--fs-micro);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  padding-inline: 1rem;
 }
-
-/* ---------- Burguer ---------- */
-
 .burger {
   display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 42px;
-  height: 42px;
-  border: var(--hairline) solid var(--border-strong);
-  border-radius: var(--r);
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-strong);
   background: transparent;
-  padding: 11px;
+  color: var(--text);
+  font-size: var(--fs-small);
+  gap: var(--sp-4);
+  align-items: center;
 }
-
-.burger__bar {
-  display: block;
-  height: 2px;
-  background: var(--text);
-  transition:
-    transform var(--dur) var(--ease),
-    opacity var(--dur) var(--ease);
-}
-
-.burger--open .burger__bar:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.burger--open .burger__bar:nth-child(2) {
-  opacity: 0;
-}
-
-.burger--open .burger__bar:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ---------- Menu mobile fullscreen ---------- */
-
 @media (max-width: 900px) {
   .burger {
-    display: flex;
+    display: inline-flex;
   }
-
   .nav {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    padding: var(--sp-4) var(--gutter) var(--sp-5);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-strong);
+    max-height: calc(100dvh - var(--header-h));
+    overflow-y: auto;
+  }
+  .nav--open {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: calc(var(--header-h) + var(--sp-7)) var(--gutter) var(--sp-9);
-    background: var(--bg);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-8px);
-    transition:
-      transform var(--dur) var(--ease),
-      opacity var(--dur) var(--ease),
-      visibility var(--dur);
   }
-
-  .nav--open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
   .nav__link {
-    padding: 1.1rem 0;
-    border-bottom: var(--hairline) solid var(--border);
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--border);
   }
-
-  .nav__link::after {
-    bottom: -1px;
-    right: auto;
-    width: 28px;
-  }
-
   .nav__cta {
-    margin-top: var(--sp-6);
-    padding: 0.9rem 1.5rem;
+    margin-top: var(--sp-4);
   }
 }
 </style>

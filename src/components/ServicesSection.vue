@@ -7,7 +7,7 @@ import { services, contacts } from '../content'
     <div class="container">
       <header class="section-head">
         <p class="eyebrow">{{ services.eyebrow }}</p>
-        <h2 class="section-head__title">Do ponto de luz ao quadro geral</h2>
+        <h2 class="section-head__title">{{ services.title }}</h2>
       </header>
 
       <ul class="index">
@@ -30,12 +30,6 @@ import { services, contacts } from '../content'
           <span class="index__arrow" aria-hidden="true">→</span>
         </li>
       </ul>
-
-      <div class="index__more">
-        <a class="btn btn--primary" :href="contacts.whatsapp" target="_blank" rel="noopener">
-          Pedir orçamento no WhatsApp
-        </a>
-      </div>
     </div>
   </section>
 </template>
@@ -51,10 +45,10 @@ import { services, contacts } from '../content'
 .index__row {
   position: relative;
   display: grid;
-  grid-template-columns: 3rem 1fr auto;
+  grid-template-columns: 1.75rem minmax(0, 1fr) auto;
   align-items: center;
   gap: var(--sp-4);
-  padding: var(--sp-4) 0;
+  padding: var(--sp-5) 0;
   border-bottom: var(--hairline) solid var(--border);
   transition: background-color var(--dur) var(--ease);
 }
@@ -78,14 +72,14 @@ import { services, contacts } from '../content'
 
 .index__num {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 600;
+  font-weight: 400;
   font-size: var(--fs-small);
-  color: var(--brand-olive);
+  color: var(--accent-text);
 }
 
 .index__title {
   font-size: var(--fs-mid);
+  line-height: 1.4;
 }
 
 .index__link {
@@ -101,7 +95,8 @@ import { services, contacts } from '../content'
 
 .index__desc {
   color: var(--text-muted);
-  font-size: var(--fs-body);
+  font-size: var(--fs-small);
+  margin-top: var(--sp-1);
   max-width: 44rem;
 }
 
@@ -121,22 +116,18 @@ import { services, contacts } from '../content'
   transform: translateX(0);
 }
 
-.index__more {
-  margin-top: var(--sp-7);
-}
-
 @media (max-width: 700px) {
   .index {
     grid-template-columns: 1fr;
   }
 
   .index__row {
-    grid-template-columns: 2.25rem 1fr;
+    grid-template-columns: 1.5rem minmax(0, 1fr) auto;
     row-gap: var(--sp-1);
   }
 
   .index__title {
-    font-size: 1.15rem;
+    font-size: 1.0625rem;
   }
 }
 </style>

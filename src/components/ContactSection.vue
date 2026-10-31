@@ -3,138 +3,103 @@ import { contact, contacts } from '../content'
 import { wa } from './icons'
 
 const channels = [
-  {
-    label: 'WhatsApp',
-    value: contacts.phoneDisplay,
-    href: contacts.whatsapp,
-    external: true,
-  },
-  {
-    label: 'E-mail',
-    value: contacts.email,
-    href: `mailto:${contacts.email}`,
-  },
-  {
-    label: 'Instagram',
-    value: contacts.instagramHandle,
-    href: contacts.instagram,
-    external: true,
-  },
-  {
-    label: 'Endereço',
-    value: contacts.fullAddress,
-  },
+  { label: 'Telefone', value: contacts.phoneDisplay, href: contacts.tel },
+  { label: 'E-mail', value: contacts.email, href: `mailto:${contacts.email}` },
+  { label: 'Instagram', value: contacts.instagramHandle, href: contacts.instagram, external: true },
+  { label: 'Endereço', value: contacts.fullAddress },
 ]
 </script>
 
 <template>
-  <section id="contato" class="contact">
-    <div class="container">
-      <header class="section-head">
+  <section id="contato" class="section contact" aria-labelledby="contact-title">
+    <div class="container contact__grid">
+      <div>
         <p class="eyebrow">{{ contact.eyebrow }}</p>
-        <h2 class="section-head__title">{{ contact.title }}</h2>
-        <p class="section-head__text">{{ contact.text }}</p>
-      </header>
-
-      <a
-        class="btn btn--primary contact__cta"
-        :href="contacts.whatsapp"
-        target="_blank"
-        rel="noopener"
-      >
-        <span class="contact__ctaicon" v-html="wa"></span>
-        Conversar no WhatsApp
-      </a>
-
-      <ul class="contact__rows">
-        <li
-          v-for="c in channels"
-          :key="c.label"
-          class="contact__row"
-          :class="{ 'contact__row--plain': !c.href }"
+        <h2 id="contact-title" class="section-head__title">{{ contact.title }}</h2>
+        <p class="contact__text">{{ contact.text }}</p>
+        <a
+          class="btn btn--primary contact__cta"
+          :href="contacts.whatsapp"
+          target="_blank"
+          rel="noopener"
         >
-          <span class="contact__label">{{ c.label }}</span>
-          <a
-            v-if="c.href"
-            :href="c.href"
-            class="contact__value"
-            :target="c.external ? '_blank' : undefined"
-            :rel="c.external ? 'noopener' : undefined"
-          >
-            {{ c.value }}
-          </a>
-          <span v-else class="contact__value">{{ c.value }}</span>
-        </li>
-      </ul>
+          <span class="icon" aria-hidden="true" v-html="wa"></span>
+          Conversar no WhatsApp
+        </a>
+      </div>
+      <dl class="contact__rows">
+        <div v-for="channel in channels" :key="channel.label" class="contact__row">
+          <dt>{{ channel.label }}</dt>
+          <dd>
+            <a
+              v-if="channel.href"
+              :href="channel.href"
+              :target="channel.external ? '_blank' : undefined"
+              :rel="channel.external ? 'noopener' : undefined"
+              >{{ channel.value }}</a
+            >
+            <span v-else>{{ channel.value }}</span>
+          </dd>
+        </div>
+      </dl>
     </div>
   </section>
 </template>
 
 <style scoped>
 .contact {
-  padding-block: var(--sp-9);
-  border-top: var(--hairline) solid var(--border);
-  background: var(--bg);
-  color: var(--text);
+  border-top: 1px solid var(--border);
 }
-
-/* ---------- CTA principal (único da seção) ---------- */
-
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sp-9);
+  align-items: start;
+}
+.contact__text {
+  margin-top: var(--sp-4);
+  color: var(--text-muted);
+  max-width: 34ch;
+}
 .contact__cta {
-  padding: 1rem 1.75rem;
-  font-size: var(--fs-small);
+  margin-top: var(--sp-5);
 }
-
-.contact__ctaicon {
-  display: inline-flex;
-}
-
-.contact__ctaicon :deep(svg) {
-  width: 20px;
-  height: 20px;
-}
-
-/* ---------- Canais ---------- */
-
 .contact__rows {
-  margin-top: var(--sp-7);
-  border-top: var(--hairline) solid var(--border);
+  border-top: 1px solid var(--border);
 }
-
 .contact__row {
   display: grid;
-  grid-template-columns: 7.5rem 1fr;
-  align-items: center;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: var(--sp-4);
-  padding: var(--sp-3) 0;
-  border-bottom: var(--hairline) solid var(--border);
+  align-items: baseline;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid var(--border);
 }
-
-.contact__label {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: var(--fs-micro);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-dim);
+dt {
+  color: var(--text-muted);
+  font-size: var(--fs-small);
 }
-
-.contact__value {
-  align-self: center;
-  color: var(--text);
-  font-size: var(--fs-body);
-  width: fit-content;
-  transition: color var(--dur) var(--ease);
+dd {
+  font-size: var(--fs-small);
+  overflow-wrap: anywhere;
 }
-
-a.contact__value:hover {
-  color: var(--accent-text);
+dd a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
-
+dd a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 @media (max-width: 700px) {
+  .contact__grid {
+    grid-template-columns: 1fr;
+    gap: var(--sp-7);
+  }
   .contact__row {
-    row-gap: var(--sp-1);
-    align-items: start;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    gap: var(--sp-3);
   }
 }
 </style>

@@ -1,7 +1,9 @@
 const { createServer } = await import('vite')
 
 const server = await createServer({
-  server: { middlewareMode: true },
+  configFile: false,
+  plugins: [(await import('@vitejs/plugin-vue')).default()],
+  server: { middlewareMode: true, hmr: false },
   appType: 'custom',
   logLevel: 'error',
 })
@@ -10,13 +12,11 @@ const { GlobalRegistrator } = await import('@happy-dom/global-registrator')
 GlobalRegistrator.register()
 
 const { createSSRApp } = await import('vue')
-const { createPinia } = await import('pinia')
 const { renderToString } = await import('@vue/server-renderer')
 
 const { default: App } = await server.ssrLoadModule('/src/App.vue')
 
 const app = createSSRApp(App)
-app.use(createPinia())
 const html = await renderToString(app)
 
 const expect = [
@@ -28,12 +28,12 @@ const expect = [
   'Instalações Elétricas Residenciais',
   'Quadros de Distribuição',
   'Emergências Elétricas',
-  'Tudo incluído',
+  'Transparência em cada etapa',
   'Orçamento por escrito',
-  'Fale conosco',
-  'Simples, rápido e',
+  'O que você precisa resolver?',
+  'Do primeiro contato ao serviço concluído.',
   'Perguntas frequentes',
-  'Marcos A. Lamin',
+  'Marcos Alan Lamin',
   'Itinga',
   'wa.me/554799587856',
   'instagram.com/lamin.marcos',
