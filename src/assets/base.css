@@ -1,5 +1,5 @@
 /* ==========================================================================
-   LAMIN — Versão 1 · tema claro
+   LAMIN — Versão 1 · temas claro e carvão/oliva
    Paleta extraída de public/lamin.jpeg por amostragem:
    fundo #000000 · amarelo do logo #e6e83d · branco quente #d5d4cc
    · oliva de apoio #b1b18c–#d2d4b2 · tomada esverdeada #dee5d2
@@ -40,7 +40,8 @@
   --accent-on-brand: var(--brand-yellow);
 
   /* ---------- Rotulação ---------- */
-  --eyebrow: #6d6500;
+  --eyebrow: #626447;
+  --logo-bg: #000000;
 
   /* ---------- Tipografia ---------- */
   --font-display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
@@ -90,6 +91,23 @@
 
   --ease: cubic-bezier(0.2, 0, 0.2, 1);
   --dur: 0.18s;
+}
+
+/* Tokens semânticos compartilhados por todas as seções. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #191b16;
+  --bg-soft: #23261e;
+  --bg-elevated: #2b2f24;
+  --text: #eeeee3;
+  --text-muted: #bfc2ae;
+  --text-dim: #adb19a;
+  --border: #3b4032;
+  --border-strong: #626951;
+  --brand-olive: #b6bd94;
+  --eyebrow: #b6bd94;
+  --accent-text: #c1c89e;
+  --accent-soft: rgba(182, 189, 148, 0.12);
 }
 
 /* ---------- Contraste editorial: rodapé da marca ---------- */

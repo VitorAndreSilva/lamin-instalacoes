@@ -8,7 +8,24 @@
       content="Lamin Instalações Elétricas — serviços elétricos residenciais e comerciais em Itinga, Joinville e região, com Marcos Alan Lamin. Orçamento por escrito e garantia."
     />
     <meta name="theme-color" content="#f6f5ee" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      ;(() => {
+        let stored
+        try {
+          stored = localStorage.getItem('theme')
+        } catch {}
+        const theme =
+          stored === 'dark' || stored === 'light'
+            ? stored
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light'
+        document.documentElement.dataset.theme = theme
+        document.querySelector('meta[name="theme-color"]').content =
+          theme === 'dark' ? '#191b16' : '#f6f5ee'
+      })()
+    </script>
     <meta property="og:title" content="Lamin Instalações Elétricas" />
     <meta
       property="og:description"

@@ -8,6 +8,7 @@ import TestimonialsSection from './components/TestimonialsSection.vue'
 import FaqSection from './components/FaqSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import AppFooter from './components/AppFooter.vue'
+import WhatsAppFloat from './components/WhatsAppFloat.vue'
 </script>
 
 <template>
@@ -26,4 +27,5 @@ import AppFooter from './components/AppFooter.vue'
   </main>
 
   <AppFooter />
+  <WhatsAppFloat />
 </template>

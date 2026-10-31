@@ -2,10 +2,10 @@
   <a href="#top" class="brand">
     <img
       class="brand__mark"
-      src="/public/lamin_logotipo.png"
+      src="/lamin_logotipo.png"
       alt="Lamin Instalações Elétricas"
-      width="120"
-      height="43"
+      width="570"
+      height="205"
     />
   </a>
 </template>
@@ -16,10 +16,11 @@
   align-items: center;
   min-height: 44px;
   flex-shrink: 0;
+  padding: 4px 8px;
 }
 
 .brand__mark {
-  width: 140px;
+  width: 152px;
   height: auto;
 }
 </style>

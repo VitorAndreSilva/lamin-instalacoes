@@ -4,7 +4,7 @@ import { guarantees } from '../content'
 
 <template>
   <aside class="assurances" aria-label="Condições do atendimento">
-    <p>{{ guarantees.eyebrow }} em cada etapa</p>
+    <p class="eyebrow">{{ guarantees.eyebrow }} em cada etapa</p>
     <ul>
       <li v-for="item in guarantees.list" :key="item">
         <span aria-hidden="true">✓</span>{{ item }}
@@ -21,7 +21,7 @@ import { guarantees } from '../content'
 }
 .assurances p {
   font-weight: 500;
-  font-size: var(--fs-small);
+  font-size: var(--fs-micro);
   margin-bottom: var(--sp-3);
 }
 .assurances ul {

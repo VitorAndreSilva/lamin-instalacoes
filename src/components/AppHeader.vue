@@ -2,6 +2,7 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import { nav, contacts } from '../content'
 import AppLogo from './AppLogo.vue'
+import ThemeToggle from './ThemeToggle.vue'
 
 const menuOpen = ref(false)
 const menuButton = ref(null)
@@ -33,18 +34,21 @@ onUnmounted(() => {
   <header class="header" @focusout="onFocusout">
     <div class="container header__inner">
       <AppLogo @click="closeMenu" />
-      <button
-        ref="menuButton"
-        class="burger"
-        type="button"
-        :aria-expanded="menuOpen"
-        aria-controls="nav-menu"
-        :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
-        @click="menuOpen = !menuOpen"
-      >
-        {{ menuOpen ? 'Fechar' : 'Menu' }}
-        <span aria-hidden="true">{{ menuOpen ? '−' : '+' }}</span>
-      </button>
+      <div class="header__actions">
+        <ThemeToggle />
+        <button
+          ref="menuButton"
+          class="burger"
+          type="button"
+          :aria-expanded="menuOpen"
+          aria-controls="nav-menu"
+          :aria-label="menuOpen ? 'Fechar menu' : 'Abrir menu'"
+          @click="menuOpen = !menuOpen"
+        >
+          {{ menuOpen ? 'Fechar' : 'Menu' }}
+          <span aria-hidden="true">{{ menuOpen ? '−' : '+' }}</span>
+        </button>
+      </div>
       <nav
         id="nav-menu"
         class="nav"
@@ -87,6 +91,17 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: var(--sp-6);
+}
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  order: 2;
+}
+@media (min-width: 901px) {
+  .nav {
+    margin-left: auto;
+  }
 }
 .nav__link {
   display: flex;
